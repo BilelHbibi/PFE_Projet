@@ -1,0 +1,28 @@
+
+
+.titre{
+    text-align: center;
+}
+
+.titre h2 {
+  margin-top: 65px;
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+}
+
+.titre .over {
+  position: absolute;
+  width: 60px;
+  top: 125%;
+  left: 50%;
+  background-color: #b50a0d;
+  height: 3px;
+  transform: translateX(-50%);
+}
+
+@media only screen and (max-width :992px) {
+ .titre h2{
+  margin-top: 40px;
+ }
+}

@@ -1,0 +1,96 @@
+.counter {
+    position: relative;
+    height: 45vh;
+    margin-bottom: -20px;
+  }
+
+  .counter .img{
+    z-index: -1;
+  }
+.counter img{
+    width: 100%;
+    height: 45vh;
+    opacity: 0.3;
+}
+
+  .counter .overflow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(124, 10, 10, 0.658);
+    z-index: 1;
+    width: 100%;
+    height: 45vh;
+    opacity: 0.5;
+  }
+.counter .grid4{
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    color: white;
+    opacity: 1;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    
+}
+
+.counter .box{
+    text-align: center;
+    width: 100%;
+}
+
+
+.counter i{
+    font-size: 45px;
+}
+
+.counter h1{
+    font-size: 46px;
+    margin-top: 20px;
+    color: rgb(177, 22, 22);
+    font-weight: 700;
+}
+
+.counter h3{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width:992px) {
+ 
+  .counter .grid4{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
+    padding-top: 40px;
+  }
+  .counter {
+    height: 50vh;
+    margin-bottom: -7px;
+  }
+  .counter img{
+    height:50vh;
+}
+
+  .counter .overflow{
+    height: 50vh;
+  }
+
+  .counter i{
+    font-size: 40px;
+}
+
+.counter h1{
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.counter h3{
+    font-size: 13px;
+}
+  
+}

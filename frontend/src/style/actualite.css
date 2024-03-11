@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap");
+
+/* -----------------------------------Start HomeActua ----------------------------------- */
+.homeActua .container {
+  padding: 25px 0 !important;
+}
+
+.homeActua .gaper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.homeActua .gaper .compo {
+  margin: 0;
+  width: 95%;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+.homeActua .gaper .compo:hover {
+  background-color: white;
+  box-shadow: -1px 2px 25px -8px rgba(0, 0, 0, 0.67);
+  border-radius: 10px;
+}
+
+.gaper .compo img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.gaper .compo a:first-of-type {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.homeActua .gaper .compo p {
+  color: gray;
+  margin-top: 10px;
+  line-height: 28px;
+  height: 250px;
+}
+
+.homeActua .gaper .compo a:last-of-type {
+  font-size: 18px;
+  color: #b50a0d;
+}
+
+.homeActua .btn,
+.HomeFaq .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeActua .btn button,
+.HomeFaq .btn button {
+  width: auto;
+  margin-top: 50px;
+  padding: 0 30px;
+  background: none;
+  border-radius: 50px;
+  border: 1px solid #c51417;
+  transition: 0.4s;
+  outline: green;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  border: none;
+}
+
+.HomeFaq .btn button{
+  margin-top: 25px !important;
+}
+
+.homeActua .btn button:hover,
+.HomeFaq .btn button:hover {
+  background-color: #c51417;
+}
+
+.homeActua .btn button a,
+.HomeFaq .btn button a {
+  text-align: center;
+  text-decoration: none;
+  color: #c51417;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Almarai", sans-serif;
+  display: block;
+  padding: 8px 0;
+  transition: 0.4s;
+}
+
+.homeActua .btn button:hover a,
+.HomeFaq .btn button:hover a {
+  color: white;
+}
+
+/* -------------- Screen for 600 -------------- */
+@media only screen and (max-width: 600px) {
+  .gaper .compo img {
+    width: 100% !important;
+    margin: auto !important;
+  }
+  .homeActua .btn button a,
+.HomeFaq .btn button a {
+  font-size: 15px !important;
+}
+.homeActua .btn button,
+.HomeFaq .btn button {
+  padding:0 20px !important;
+}
+}
+
+/* -------------- Screen for 992 -------------- */
+@media only screen and (max-width: 992px) {
+  .homeActua .btn button,
+  .HomeFaq .btn button {
+    margin-top: 15px;
+  }
+
+  .homeActua .gaper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+
+  .homeActua .gaper .compo {
+    margin: auto;
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .homeActua .gaper .compo p {
+    height: auto;
+  }
+
+  
+
+  .gaper .compo div {
+    text-align: center;
+  }
+
+  .gaper .compo img {
+    width: 60%;
+  }
+}
+
+/* -----------------------------------End of  HomeActua ----------------------------------- */
+
+/* -----------------------------------Start ActualitésId ----------------------------------- */
+.ActualitésId .content {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+.ActualitésId .content .photo {
+  display: flex;
+  border-radius: 50px 0;
+  position: relative;
+}
+
+.ActualitésId .content img {
+  width: 33%;
+  margin-top: 12px;
+  margin-right: 10px;
+}
+
+.ActualitésId .content img:nth-child(1) {
+  border-top-left-radius: 40px;
+}
+
+.ActualitésId .content img:nth-child(3) {
+  border-top-right-radius: 40px;
+}
+
+.ActualitésId .content .desc {
+  width: 100%;
+  text-align: center;
+}
+
+.date {
+  display: flex;
+  color: rgb(156, 156, 156);
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+
+.date i {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.date p {
+  font-size: 15px !important;
+  margin-left: 2px;
+  color: rgb(156, 156, 156) !important;
+}
+
+.ActualitésId .content .desc h3 {
+  font-family: "Lora", serif;
+  text-align: start;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.ActualitésId .content .desc p {
+  font-size: 18px;
+  line-height: 35px;
+  color: rgb(136, 136, 136);
+  text-align: justify;
+}
+
+.ActualitésId .content .convention h3 {
+  word-spacing: 2px;
+  letter-spacing: 0.2px;
+}
+
+/* -------------- Screen for 600 -------------- */
+@media only screen and (max-width: 600px) {
+  .ActualitésId .content img {
+    width: 330px !important;
+    height: 180px !important;
+    margin-bottom: 10px;
+  }
+}
+
+/* -------------- Screen for 992 -------------- */
+@media only screen and (max-width: 992px) {
+  .ActualitésId {
+    width: 80%;
+    margin: auto;
+  }
+  .ActualitésId .container {
+    margin: 0px 0;
+    padding: 20px 0;
+  }
+
+  .ActualitésId .content {
+    margin-top: 10px;
+  }
+  .ActualitésId .content .photo {
+    display: block;
+    border-radius: 0 0;
+    position: relative;
+  }
+
+  .ActualitésId .content img {
+    width: 285px;
+    height: 150px;
+    margin-top: 12px;
+    margin-right: 20px;
+  }
+
+  .ActualitésId .content img:nth-child(1) {
+    border-top-left-radius: 0px;
+  }
+  .ActualitésId .content img:nth-child(2) {
+    display: none;
+  }
+
+  .ActualitésId .content img:nth-child(3) {
+    border-top-right-radius: 0px;
+  }
+
+  .date i {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .date p {
+    font-size: 13px;
+  }
+
+  .ActualitésId .content .desc h3 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+  }
+
+  .ActualitésId .content .desc p {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+
+/* --------actualiteImgleft / actualiteImgRight-------- */
+.actualite {
+  margin-bottom: 50px;
+}
+
+.actualiteImgleft,
+.actualiteImgRight {
+  display: flex;
+  margin-top: 40px;
+}
+
+.actualiteImgleft .photo {
+  margin-right: 25px;
+}
+
+.actualiteImgRight .photo {
+  margin-left: 25px;
+}
+
+.actualiteImgleft .photo img,
+.actualiteImgRight .photo img {
+  width: 340px;
+  height: 335px;
+  border-radius: 25px;
+  box-shadow: 0px 12px 39px 0px rgba(0, 0, 0, 0.1);
+}
+
+.actualiteImgleft .content {
+  margin: auto;
+  margin-left: 20px;
+}
+
+.actualiteImgRight .content {
+  margin-right: 20px !important;
+  margin: auto;
+}
+
+.actualiteImgleft .content h3,
+.actualiteImgRight .content h3 {
+  color: #a11c1e;
+  font-size: 23px;
+  font-family: "Lora", serif;
+  line-height: 32px;
+}
+
+.actualiteImgleft .date,
+.actualiteImgRight .date {
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+.actualiteImgleft .date i,
+.actualiteImgleft .date p,
+.actualiteImgRight .date i,
+.actualiteImgRight .date p {
+  color: rgb(151, 151, 151) !important;
+}
+
+.actualiteImgleft .content p,
+.actualiteImgRight .content p {
+  color: rgb(82, 82, 82);
+  line-height: 30px;
+  text-align: justify;
+}
+
+.actualiteImgleft .content a,
+.actualiteImgRight .content a {
+  color: #a11c1e;
+  font-family: "Lora", serif;
+  font-weight: 600;
+}
+
+/* -------------- Screen for 600 -------------- */
+@media only screen and (max-width: 600px) {
+  .actualiteImgleft .photo img,
+  .actualiteImgRight .photo img {
+    width: 300px !important;
+    height: 100% !important;
+    border-radius: 10px;
+  }
+  .actualiteImgleft .photo,
+  .actualiteImgRight .photo {
+    margin: auto;
+  }
+
+  .actualiteImgleft .content h3,
+  .actualiteImgRight .content h3 {
+    font-size: 17px !important;
+  }
+
+  .actualiteImgleft .content p,
+  .actualiteImgRight .content p {
+    line-height: 27px;
+    font-size: 14px;
+  }
+
+  .actualiteImgleft .content a,
+  .actualiteImgRight .content a {
+    font-size: 15px;
+  }
+}
+
+/* -------------- Screen for 992 -------------- */
+@media only screen and (max-width: 992px) {
+  .actualiteImgRight,
+  .actualiteImgleft {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 30px;
+    margin-top: 20px !important;
+  }
+
+  .actualiteImgRight:last-child {
+    margin-bottom: -10px !important;
+  }
+
+  .actualiteImgRight .photo {
+    margin-left: 25px;
+  }
+
+  .actualiteImgRight:hover,
+  .actualiteImgleft:hover {
+    background-color: white;
+    box-shadow: -1px 2px 25px -8px rgba(0, 0, 0, 0.67);
+    border-radius: 10px;
+  }
+
+  .actualiteImgleft .photo img,
+  .actualiteImgRight .photo img {
+    width: 70%;
+    height: 100%;
+  }
+  .actualiteImgleft .photo,
+  .actualiteImgRight .photo {
+    text-align: center;
+  }
+
+  .actualiteImgRight .content {
+    order: 2;
+    margin-top: 20px;
+  }
+
+  .actualiteImgRight .photo {
+    order: 1;
+  }
+
+  .actualiteImgleft .content h3,
+  .actualiteImgRight .content h3 {
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 15px;
+  }
+}

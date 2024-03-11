@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --primary-color: #ff0101;
+  --secondary-color: #fa3c35;
+  --heading-color: #070707;
+  --text-color: #6e7074;
+  --subtitle-font-name: "Island Moments", cursive;
+}
+
+.container{
+  max-width: 1250px !important;
+  margin: 20px 0;
+  padding: 30px 0;
+}
+
+.primary__btn {
+  background: var(--secondary-color) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 0.4rem 1.5rem !;
+}
+
+.primary__btn a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+}
+.primary__btn a:hover {
+  color: inherit;
+}
+.secondary__btn {
+  background: transparent !important;
+  color: #0b2727 !important;
+  border: none !important;
+  font-weight: 500 !important;
+}
+
+.secondary__btn a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: var(--heading-color);
+}
+
+.secondary__btn a:hover {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+
+
+@media only screen and (max-width:992px) {
+  .container{
+    max-width: 650px !important;
+    margin:5px 0;
+  }
+}
+
+
+

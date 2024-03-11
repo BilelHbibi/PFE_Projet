@@ -1,0 +1,79 @@
+.crumbs {
+  display: flex;
+  align-items: center;
+}
+
+.crumb a {
+  text-decoration: none;
+}
+
+span.inactive::first-letter {
+  text-transform: capitalize;
+}
+
+.crumb a.active {
+  font-weight: bold;
+  pointer-events: none;
+  color: #333;
+  font-size: 18px;
+  text-transform: capitalize;
+  /* text-decoration: underline;
+  text-underline-offset:5px ; */
+}
+
+.crumb a.inactive,
+span.inactive {
+  color: rgb(107, 106, 106);
+  font-size: 18px;
+}
+
+.separator {
+  font-size: 17px;
+  color: gray;
+}
+
+@media only screen and (max-width: 600px) {
+  .crumb a.active {
+    font-size: 11px !important;
+  }
+  .crumb a.inactive,
+  span.inactive {
+    font-size: 12px !important;
+  }
+
+  span.inactive{
+    margin-top: 3px !important;
+  }
+  .separator {
+    font-size: 12px !important;
+    margin-top: 3px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .crumbs{
+    margin-bottom: 15px;
+    align-items: start;
+
+  }
+  .crumb a.active {
+    font-size: 14px;
+  }
+
+  .crumb a.inactive,
+  span.inactive {
+    font-size: 14px;
+  }
+
+  span.crumb{
+    margin-top: -1px;
+  }
+
+  span.inactive{
+    margin-top: 1px;
+  }
+
+  .separator {
+    font-size: 15px;
+  }
+}

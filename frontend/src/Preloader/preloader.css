@@ -1,0 +1,184 @@
+/*== Preloader Css ======*/
+.handle-preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#f31945;
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    z-index: 9999999;
+  }
+  
+  .preloader-close {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    z-index: 99999999;
+  }
+  
+  .handle-preloader .animation-preloader {
+    position: absolute;
+    z-index: 100;
+  }
+
+  
+  .handle-preloader .animation-preloader .spinner {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 45px auto;
+  
+    animation-name: zoomInOut;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  
+    -webkit-animation-name: zoomInOut;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+  
+    -moz-animation-name: zoomInOut;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+  
+    -ms-animation-name: zoomInOut;
+    -ms-animation-duration: 3s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: ease-in-out;
+  
+    -o-animation-name: zoomInOut;
+    -o-animation-duration: 3s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading {
+    text-align: center;
+    user-select: none;
+    margin-bottom: 55px;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-size: 70px;
+    line-height: 70px;
+    font-weight: 600;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.30);
+    font-family: var(--thm-font);
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: letters-loading 4s infinite;
+    content: attr(data-text-preloader);
+    opacity: 0;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(2):before {
+    animation-delay: 0.2s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(3):before {
+    animation-delay: 0.4s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(4):before {
+    animation-delay: 0.6s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(5):before {
+    animation-delay: 0.8s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(6):before {
+    animation-delay: 1s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
+    animation-delay: 1.3s;
+  }
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(8):before {
+    animation-delay: 1.5s;
+  }
+  
+  
+  /**
+  animation: spinner 1s infinite linear;
+  .handle-preloader .loader-section {
+    background-color: #ffffff;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: calc(50% + 1px);
+  }
+  **/
+  
+  .preloader .loaded .animation-preloader {
+    opacity: 0;
+    transition: 0.3s ease-out;
+  }
+  
+  
+  .handle-preloader .animation-preloader .txt-loading .letters-loading:before {
+    color: #ffffff;
+  }
+  
+  .handle-preloader .animation-preloader .spinner {
+    border: 4px solid #ffffff;
+    /**border-top-color: rgba(255, 255, 255, 0.5); **/
+  }
+  
+  
+  /* Animation preloader */
+  @keyframes spinner {
+    100%{
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  @keyframes letters-loading {
+  
+    0%,
+    75%,
+    100% {
+      opacity: 0;
+      transform: rotateY(-90deg);
+    }
+  
+    25%,
+    50% {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+  }
+
+
+  
+  
+  
+  
+  
