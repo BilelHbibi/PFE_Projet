@@ -28,6 +28,7 @@ const Routers = () => {
         <Route path="/finance" element={<Navigate to="/home" />} />
         <Route path="/espace" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/accueil" element={<Home />} />
         <Route path="/finance/financement-classique" element={<FinanceClass/>} />
         <Route path="/finance/financement-mourabaha" element={<FinanceMoura/>} />
         <Route path="/finance/financement-ijara" element={<FinanceIjara/>} />

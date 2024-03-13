@@ -13,19 +13,20 @@ const Footer = () => {
               <h2>Autre</h2>
               <ul>
                 <li>
-                  <NavLink to={"/faq"}>FAQ</NavLink>
+                  <NavLink to={"/accueil"}>Accueil</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/Partenaire"}>Partenaires</NavLink>
+                  <NavLink to={"/FAQ"}>FAQ</NavLink>
+                </li>
+
+                <li>
+                  <NavLink to={"/actualités"}>Actualités</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/Actualités"}>Actualités</NavLink>
+                  <NavLink to={"/Présentation-Générale"}>A Propos</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/A propos"}>A Propos</NavLink>
-                </li>
-                <li>
-                  <NavLink to={"/Contact"}>Contact</NavLink>
+                  <NavLink to={"/contact"}>Contact</NavLink>
                 </li>
               </ul>
             </div>
@@ -85,8 +86,8 @@ const Footer = () => {
           <hr></hr>
           <div className="bas">
             <div className="one">
-            <img src={logo2} alt="" />
-            <h3>تمول مشروعك</h3>
+              <img src={logo2} alt="" />
+              <h3>تمول مشروعك</h3>
             </div>
             <p>© 2024 Banque BTS</p>
           </div>

@@ -1,100 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-.login{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    box-shadow:rgba(17, 12, 46, 0.15) 0 48px 100px 0 ;
-    margin-top: 50px;
-    height: 430px;
-    margin-bottom: 70px;
-    width: 90%;
-    margin: 50px auto;
-
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+  margin-top: 50px;
+  height: 430px;
+  margin-bottom: 70px;
+  width: 90%;
+  margin: 50px auto;
 }
 
-.login__img{
-    width: 65%;
-    text-align: center;
+.login__img {
+  width: 65%;
+  text-align: center;
 }
 
-.login__img img{
-    width: 65%;
-    object-fit: cover;
+.login__img img {
+  width: 65%;
+  object-fit: cover;
 }
-.login__form{
-    padding: 50px;
-    position: relative;
-    background-color: rgb(228, 32, 32);
-    margin: 0;
-    height:100%;
-    width: 35%;
+.login__form {
+  padding: 50px;
+  position: relative;
+  background-color: rgb(228, 32, 32);
+  margin: 0;
+  height: 100%;
+  width: 35%;
 }
-.login__form .user{
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    top: -9%;
-    left: 50%;
-    transform: translate(-50%,-9%);
-}
-
-.login__form .user img{
-    width: 100%;
+.login__form .user {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -9%;
+  left: 50%;
+  transform: translate(-50%, -9%);
 }
 
-.login__form h2{
-    color: #fff;
-    text-align: center;
-    margin-bottom: 2rem;
+.login__form .user img {
+  width: 100%;
 }
 
-.login .input{
-    margin-top: 50px;
+.login__form h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login .input {
+  margin-top: 50px;
+}
+
+.login .input input {
+  width: 100%;
+  padding: 10px 18px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  color: black;
+  outline: none;
+  font-size: 15px;
+}
+
+.login .ant-col{
+  margin-bottom: 3px;
+}
+
+.auth__btn {
+  background: var(--heading-color) !important;
+  width: 100%;
+  color: #fff !important;
+  padding: 12px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  font-family: "Roboto", sans-serif !important;
+  outline:none !important;
+}
+
+.login p {
+  color: white;
+  font-size: 17px;
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.login span a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.inscription {
+  height: 470px;
+}
+
+.inscription p {
+  font-size: 16px;
+  margin-top: 15px;
 }
 
 
-.login .input input{
-    width:100%;
-    padding: 10px 18px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    color:black;
-    outline: none;
-    margin-bottom: 13px;
-    font-size: 15px;
+.ant-form-item-explain-error{
+  color: white !important;
 }
 
-.auth__btn{
-    background: var(--heading-color) !important;
-    width: 100%;
-    color: #fff !important;
-    padding: 12px !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    font-family: "Roboto", sans-serif !important;
-}
-
-.login p{
-    color: white;
-    font-size: 17px;
-    margin-top: 12px;
-    font-weight: 400;
-}
-
-.login span a{
-    color: black;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.inscription{
-    height: 470px;
-}
-
-.inscription p{
-    font-size: 16px;
+@media only screen and (max-width: 900px) {
+  .login {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     margin-top: 15px;
-}
+    height: auto;
+    margin-bottom: 70px;
+  }
+  .login__img {
+    width: 100%;
+  }
 
+  .login__img img {
+    width: 100%;
+  }
+  .login__form {
+    width: 100%;
+    margin-top: 100px;
+    padding: 50px 50px 0px 50px;
+    height: 90%;
+  }
+}

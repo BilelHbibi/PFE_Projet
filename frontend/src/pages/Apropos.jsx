@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumbs from "../components/breadCrumbs/Breadcrumbs";
 import BackForAll from "../components/backAll/BackForAll";
 import img1 from "../assets/images/Bts scroll/carousel1.jpg";
+import { useLocation } from "react-router-dom";
 
 const Apropos = () => {
+  function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  }
   return (
     <>
+    <ScrollToTop />
       <BackForAll text="Présentation Générale" img={img1} />
       <div className="container">
         <Breadcrumbs />

@@ -1,79 +1,159 @@
-.contact{
-    margin: 20px 0;
-    background-color: rgb(250, 244, 244); 
-    padding: 40px;
-    display: flex;
-    position: relative;
+.contact {
+  margin: 20px 0;
+  background-color: rgb(250, 244, 244);
+  padding: 40px;
+  display: flex;
+  position: relative;
 }
 
-.contact .content{
-    width: 60%;
+.contact .content {
+  width: 60%;
 }
 
-.contact .content .input{
-    margin-top: 20px;
+.contact .content .input {
+  margin-top: 20px;
 }
 
-.contact .content .input .input1{
-    display:grid;
+.contact .content .input .input1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.contact .content .input input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.contact .content .input span {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.contact .content .input ::placeholder {
+  color: rgb(170, 169, 169);
+  font-size: 18px;
+}
+
+.contact .content .input .input2 textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.contact .content .input .input2 textarea::placeholder {
+  padding: 8px 0 0 15px;
+  font-size: 19px;
+}
+
+.contact .content button {
+  padding: 15px;
+  border: none;
+  outline: none;
+  margin-top: 30px;
+  background-color: rgba(250, 59, 59, 0.87);
+  color: white;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.contact .map {
+  width: 40%;
+  padding-left: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.contact .map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.contact__bts {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 60px;
+}
+
+.contact__bts div {
+  text-align: center;
+  margin-right: 15px;
+}
+
+.contact__bts .contact__icon {
+  background-color: rgba(250, 59, 59, 0.87);
+  border-radius: 50px;
+  width: 55px;
+  padding: 10px;
+  margin: auto;
+}
+.contact__bts .contact__icon i {
+  font-size: 25px;
+  color: white;
+}
+.contact__bts .contact__content p {
+  font-size: 17px;
+  margin-top: 15px;
+  color: rgba(250, 59, 59, 0.801);
+}
+
+.contact__bts .contact__content span {
+  font-weight: 600;
+  color: black;
+}
+
+
+@media only screen and (max-width: 600px){
+    .contact .content .input .input1 {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .contact .content h3{
+        font-size: 25px;
+        margin-bottom: 25px;
+        display: inline-block;
+      }
+      .contact__bts {
+        grid-template-columns: repeat(1,1fr) !important;
+     }
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+  .contact {
+    display: block;
+  }
+
+  .contact .content {
+    width: 100%;
+  }
+  .contact .map {
+    display: none;
+  }
+  .contact__bts {
+    display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-gap: 20px;
-}
-
-.contact .content .input input{
+  }
+  .contact__bts .contact__content p {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-
-.contact .content .input span{
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: inline-block;
-}
-
-.contact .content .input ::placeholder{
-    color: rgb(170, 169, 169);
-    font-size: 18px;
-}
-
-.contact .content .input .input2 textarea{
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-.contact .content .input .input2 textarea::placeholder{     
-    padding: 8px 0 0 15px;
-    font-size: 19px;
-}
-
-.contact .content button{
-    padding: 15px;
-    border: none;
-    outline: none;
-    margin-top: 30px;
-    background-color: rgba(250, 59, 59, 0.87); 
-    color: white;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size:17px;
-}
-
-.contact .map{
-    width: 40%;
-    padding-left: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.contact .map iframe{
-    width: 100%;
-    height: 100%;
+  }
+  .contact__bts div {
+    margin-right:0;
+  }
+  .contact__bts .map{
+    margin-top: 20px;
+  }
 }
