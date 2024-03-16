@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import FinanceClass from "../pages/Finance/FinanceClass";
@@ -18,38 +18,53 @@ import BtsSign from "../pages/Actualité/BtsSign";
 import AllFaqs from "../pages/faqs/AllFaqs";
 import Inscription from "../pages/sign/Inscription";
 import Connexion from "../pages/sign/Connexion";
+import ProtectedPage from "../components/ensemble/ProtectedPage/ProtectedPage";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import { useSelector } from "react-redux";
+import Spinner from "../components/ensemble/spinnerSign/Spinner";
+import Profile from "../pages/AvantSign/Profile/Profile";
+import Client from "../pages/AvantSign/client/Client";
 
 
 const Routers = () => {
+  const { loading } = useSelector(state => state.loaders);
+
   return (
     <>
+      {loading && <Spinner size="large" />}
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/finance" element={<Navigate to="/home" />} />
-        <Route path="/espace" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/accueil" element={<Home />} />
-        <Route path="/finance/financement-classique" element={<FinanceClass/>} />
-        <Route path="/finance/financement-mourabaha" element={<FinanceMoura/>} />
-        <Route path="/finance/financement-ijara" element={<FinanceIjara/>} />
-        <Route path="/espace/espace-client" element={<EspaceClient/>} />
-        <Route path="/espace/espace-fournisseur" element={<EspaceFourni/>} />
-        <Route path="/Présentation-Générale" element={<Apropos/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/connexion" element={<Connexion />} />
-        <Route path="/inscription" element={<Inscription />} />
+        <Route path="/" element={<><Header/><Navigate to="/home" /><Footer/></>} />
+        <Route path="/finance" element={<><Header/><Navigate to="/home" /><Footer/></>} />
+        <Route path="/espace" element={<><Header/><Navigate to="/home" /><Footer/></>} />
+        <Route path="/home" element={<><Header/><Home/><Footer/></>} />
+        <Route path="/accueil" element={<><Header/><Home/><Footer/></>} />
+        <Route path="/finance/financement-classique" element={<><Header/><FinanceClass/><Footer/></>} />
+        <Route path="/finance/financement-mourabaha" element={<><Header/><FinanceMoura/><Footer/></>} />
+        <Route path="/finance/financement-ijara" element={<><Header/><FinanceIjara/><Footer/></>} />
+        <Route path="/espace/espace-client" element={<><Header/><EspaceClient/><Footer/></>} />
+        <Route path="/espace/espace-fournisseur" element={<><Header/><EspaceFourni/><Footer/></>} />
+        <Route path="/Présentation-Générale" element={<><Header/><Apropos/><Footer/></>} />
+        <Route path="/contact" element={<><Header/><Contact/><Footer/></>} />
+        <Route path="/connexion" element={<><Connexion/><Footer/></>} />
+        <Route path="/inscription" element={<><Inscription/><Footer/></>} />
+        
 
         {/* for actualité */}
-        <Route path="/actualités" element={<Actualité />} />
-        <Route path="/actualités/la-bts-bank-confirme-la-solidité-de-ses-indicateurs-financiers" element={<BtsConfirme/>} />
-        <Route path="/actualités/signature-d'une-convention-de-partenariat" element={<BtsConvention/>} />
-        <Route path="/actualités/La-BTS-BANK-entame-son-programme-de-conversion..." element={<BtsEntame/>} />
-        <Route path="/actualités/La-BTS-BANK-externalise-son-systeme-d'information-de-secours" element={<BtsExternaliste/>} />
-        <Route path="/actualités/la-bts-bank-inaugure-un-centre-de-developpement-des-competences" element={<BtsInaugure/>} />
-        <Route path="/actualités/la-bts-bank-signe-une-convention-de-partenariat-dans-le-cadre-de-la-promotion..." element={<BtsSign/>} />
+        <Route path="/actualités" element={<><Header/><Actualité/><Footer/></>} />
+        <Route path="/actualités/la-bts-bank-confirme-la-solidité-de-ses-indicateurs-financiers" element={<><Header/><BtsConfirme/><Footer/></>} />
+        <Route path="/actualités/signature-d'une-convention-de-partenariat" element={<><Header/><BtsConvention/><Footer/></>} />
+        <Route path="/actualités/La-BTS-BANK-entame-son-programme-de-conversion..." element={<><Header/><BtsEntame/><Footer/></>} />
+        <Route path="/actualités/La-BTS-BANK-externalise-son-systeme-d'information-de-secours" element={<><Header/><BtsExternaliste/><Footer/></>} />
+        <Route path="/actualités/la-bts-bank-inaugure-un-centre-de-developpement-des-competences" element={<><Header/><BtsInaugure/><Footer/></>} />
+        <Route path="/actualités/la-bts-bank-signe-une-convention-de-partenariat-dans-le-cadre-de-la-promotion..." element={<><Header/><BtsSign/><Footer/></>} />
+
+        <Route path="/FAQ" element={<><Header/><AllFaqs/><Footer/></>} />
 
 
-        <Route path="/FAQ" element={<AllFaqs/>} />
+        {/* Avant Inscription */}
+        <Route path="/client" element={<><ProtectedPage><Client/></ProtectedPage></>} />
+        <Route path="/profile" element={<><ProtectedPage><Profile/></ProtectedPage></>} />
 
       </Routes>
     </>
@@ -57,5 +72,3 @@ const Routers = () => {
 };
 
 export default Routers;
-
-

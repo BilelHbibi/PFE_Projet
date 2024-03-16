@@ -1,0 +1,32 @@
+.spinner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.spinner div {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid white;
+  border-top: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  border-style: solid;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

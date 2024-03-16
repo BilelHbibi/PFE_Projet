@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './App.css';
 // import { useState } from 'react';
 // import { useEffect } from 'react';
-import Preloader from './Preloader/Preloader';
+// import Preloader from './Preloader/Preloader';
 import Layout from './components/layout/Layout';
 import Aos from 'aos';
 import "aos/dist/aos.css"
@@ -14,7 +14,7 @@ function App() {
   },[])
   return(
     <>
-     <Preloader/>
+     {/* <Preloader/> */}
      <Layout/>
     </>
   )
