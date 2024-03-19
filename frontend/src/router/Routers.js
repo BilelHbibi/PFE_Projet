@@ -21,18 +21,18 @@ import Connexion from "../pages/sign/Connexion";
 import ProtectedPage from "../components/ensemble/ProtectedPage/ProtectedPage";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import { useSelector } from "react-redux";
-import Spinner from "../components/ensemble/spinnerSign/Spinner";
 import Profile from "../pages/AvantSign/Profile/Profile";
 import Client from "../pages/AvantSign/client/Client";
+import Spinner from "../components/ensemble/spinnerSign/Spinner";
+import { useSelector } from "react-redux";
 
 
 const Routers = () => {
-  const { loading } = useSelector(state => state.loaders);
+       const { loading } = useSelector((state) => state.loaders);
 
   return (
     <>
-      {loading && <Spinner size="large" />}
+        {loading && <Spinner size="large" />}
       <Routes>
         <Route path="/" element={<><Header/><Navigate to="/home" /><Footer/></>} />
         <Route path="/finance" element={<><Header/><Navigate to="/home" /><Footer/></>} />

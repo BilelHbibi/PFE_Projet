@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoader } from "../../../redux/loadersSlice";
 import { setUser } from "../../../redux/usersSlice";
 import "../../../style/AvantSign/protectedPage.css";
+import Spinner from "../spinnerSign/Spinner";
 
 const ProtectedPage = ({ children }) => {
   const { user } = useSelector((state) => state.users);
@@ -37,8 +38,10 @@ const ProtectedPage = ({ children }) => {
     }
   }, []);
 
+
   return (
     <>
+
       {user && (
         <>
           <div className="ProtectedPage">

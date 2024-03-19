@@ -1,0 +1,151 @@
+/* Styles généraux */
+.profile {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Styles pour les onglets */
+.ant-tabs-tab-btn,
+.ant-tabs-tab-active {
+  color: black;
+  font-size: 17px;
+}
+.ant-tabs-tab-btn {
+  margin-top: 5px;
+}
+
+/* Styles pour la barre de soulignement des onglets */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-tabs .ant-tabs-ink-bar {
+  background: #e04a4a !important;
+  padding: 1.5px !important;
+}
+
+/* Styles pour les onglets actifs */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: rgb(143, 41, 41) !important;
+}
+
+/* Styles pour les boutons par défaut */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-btn-default {
+  color: black;
+  font-size: 17px !important;
+  border-radius: 0 !important;
+}
+
+/* Styles pour les boutons par défaut lorsqu'ils sont survolés */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-btn-default:hover {
+  color: #e04a4a !important;
+  border-color: #e04a4a !important;
+  box-shadow: none !important;
+}
+
+/* Styles pour les boutons primaires */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-btn-primary {
+  background: #e04a4a !important;
+  border-radius: 0 !important;
+  color: white !important;
+}
+
+/* Styles pour le contenu des onglets */
+.profile button {
+  font-size: 17px !important;
+  padding: 20px 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-modal-footer
+  :where(.css-dev-only-do-not-override-1ae8k9u).ant-btn-default {
+  font-size: 16px !important;
+  padding: 0 20px !important;
+  display: inline-block;
+}
+
+/* Styles pour les boutons lorsqu'ils sont en focus */
+.ant-btn-default:focus {
+  background-color: white !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Styles pour les onglets lorsqu'ils sont en focus */
+.ant-tabs-tab-btn:focus {
+  color: rgb(143, 41, 41) !important;
+}
+
+.Modal .ant-form-item-explain-error {
+  color: #e04a4a !important;
+  margin-bottom: 10px !important;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-disabled
+  .ant-tabs-tab-btn {
+  color: rgb(179, 178, 178) !important;
+}
+
+.Modal .check {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.Modal .ant-col label {
+  font-size: 17px !important;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-pagination
+  .ant-pagination-item-active {
+  border-color: #e2e2e2 !important;
+}
+
+.ant-btn-dashed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px !important;
+  border-color: gray !important;
+}
+
+.ant-upload-select span {
+  font-size: 17px !important;
+}
+
+.ant-upload-select:hover span {
+  color: black !important;
+}
+.ant-btn-dashed:hover {
+  border-color: black !important;
+}
+
+.ImagesButton {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  margin-top: 1.25rem;
+}
+.ImagesButton button{
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ImagesButton .ant-btn-primary:disabled{
+  background-color: rgba(250, 3, 3, 0.281) !important;
+}
+
+.imgDownload{
+  display: flex;
+  gap: 2;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.25rem;
+}
+
+.imgDownload img{
+  height: 5rem; 
+  width: 5rem; 
+  object-fit: cover;
+}

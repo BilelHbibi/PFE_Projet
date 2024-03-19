@@ -101,7 +101,8 @@
 }
 
 
-.ant-form-item-explain-error{
+.login .ant-form-item-explain-error,
+.inscription .ant-form-item-explain-error{
   color: white !important;
 }
 

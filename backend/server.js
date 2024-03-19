@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import usersRoute from "./routes/usersRoute.js";
+import productsRoute from "./routes/productsRoute.js";
 
 dotenv.config();
 const app = express();
@@ -15,11 +16,12 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("MongoDB database is connected");
   } catch (error) {
-    console.log("MongoDB database is failed connect");
+    console.log("MongoDB connection error:", error); // Ajout de cette ligne
   }
 };
-
 app.use("/api/users", usersRoute);
+app.use("/api/products", productsRoute);
+
 
 app.listen(port, () => {
   connectDB();

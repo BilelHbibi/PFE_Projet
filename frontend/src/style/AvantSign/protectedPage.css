@@ -9,13 +9,13 @@
   }
   
   .ProtectedPage2 .header h1{
-      font-size: 1.5rem;
+      font-size: 1.5rem !important;
       color: white;
   }
   
   .ProtectedPage2 .name{
       background-color: white;
-      padding: 8px 20px;
+      padding: 8px 20px !important;
       line-height: 20px;
       border-radius: 5px;
       display: flex;

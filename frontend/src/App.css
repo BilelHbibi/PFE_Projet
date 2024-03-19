@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 body {
@@ -18,6 +19,18 @@ body {
   --text-color: #6e7074;
   --subtitle-font-name: "Island Moments", cursive;
 }
+
+input,select,textarea{
+  min-height: 45px !important;
+  border: 1px solid #b9b9b9 !important;
+  width: 100% !important;
+}
+input:focus,select:focus,textarea:focus{
+  outline: none !important;
+  border: 1px solid #b9b9b9 !important;
+  box-shadow: none !important;
+}
+
 
 .container{
   max-width: 1250px !important;
@@ -69,6 +82,19 @@ button:focus{
   outline: none !important;
   box-shadow: none !important;
 }
+
+table{
+  border: 1px solid #a1a1a1 !important;
+  font-size: 17px !important;
+  border-radius: 2px;
+
+}
+
+i{
+  font-size: 20px;
+}
+
+
 
 
 

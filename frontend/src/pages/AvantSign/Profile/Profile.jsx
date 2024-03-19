@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <>
      <div>
-     <Tabs defaultActiveKey='1'>
+     <Tabs defaultActiveKey='1' className="custom-tabs">
       <Tabs.TabPane tab="Products" key="1">
         <Products/>
       </Tabs.TabPane>

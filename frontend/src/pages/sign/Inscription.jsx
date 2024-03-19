@@ -29,7 +29,7 @@ const Inscription = () => {
         password: values.password,
       };
       const response = await RegisterUser(payload);
-      navigate("/connexion")
+      navigate("/connexion");
       dispatch(setLoader(false));
       if (response.success) {
         message.success("Inscription réussie"); // Show success message
