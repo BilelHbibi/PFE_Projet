@@ -38,22 +38,29 @@ const ProtectedPage = ({ children }) => {
     }
   }, []);
 
-
   return (
     <>
-
       {user && (
         <>
           <div className="ProtectedPage">
             <div className="ProtectedPage2">
               <div className="header">
-                <h1>Market Place</h1>
+                <h1
+                  onClick={() => navigate("/client")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Market Place
+                </h1>
               </div>
               <div className="name">
                 <i className="ri-shield-user-line"></i>
                 <span
                   onClick={() => {
-                    navigate("/profile");
+                    if (user.role === "user") {
+                      navigate("/profile");
+                    } else {
+                      navigate("/admin");
+                    }
                   }}
                 >
                   {user.name}

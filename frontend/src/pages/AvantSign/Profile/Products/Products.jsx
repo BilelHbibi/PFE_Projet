@@ -2,25 +2,27 @@ import React, { useEffect, useState } from "react";
 import "../../../../style/AvantSign/profile.css";
 import { Button, Table, message } from "antd";
 import ProductsForm from "./ProductsForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoader } from "../../../../redux/loadersSlice";
 import { DeleteProduct, GetProducts } from "../../../../apicalls/products";
 import moment from "moment";
+import Bids from "./Bids";
 
 const Products = () => {
+  const [showBids, setShowBids] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const [showProductForm, setShowProductForm] = useState(false);
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.users);
 
   const getData = async () => {
     try {
       dispatch(setLoader(true));
-      const response = await GetProducts();
+      const response = await GetProducts({ seller: user._id });
       dispatch(setLoader(false));
       if (response.success) {
-        setProducts(response.products);
-        console.log(response);
+        setProducts(response.data);
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -72,16 +74,16 @@ const Products = () => {
     },
     {
       title: "Added On",
-      dataIndex:"createdAt",
-      render: (text,record)=>
-         moment(record.createdAt).format("DD-MM-YYYY hh:mm A"),
+      dataIndex: "createdAt",
+      render: (text, record) =>
+        moment(record.createdAt).format("DD-MM-YYYY hh:mm A"),
     },
     {
       title: "Action",
       dataIndex: "action",
       render: (text, record) => {
         return (
-          <div style={{ display: "flex", gap: "1.25rem" }}>
+          <div style={{ display: "flex", gap: "1.25rem",alignItems:"center" }}>
             <i
               className="ri-delete-bin-line"
               onClick={() => {
@@ -97,6 +99,16 @@ const Products = () => {
                 setShowProductForm(true);
               }}
             ></i>
+
+            <span
+              style={{ textDecoration:"underline",cursor:"pointer" }}
+              onClick={() => {
+                setSelectedProduct(record);
+                setShowBids(true);
+              }}
+            >
+              Show Bids
+            </span>
           </div>
         );
       },
@@ -128,6 +140,14 @@ const Products = () => {
           setShowProductForm={setShowProductForm}
           selectedProduct={selectedProduct}
           getData={getData}
+        />
+      )}
+
+      {showBids && (
+        <Bids
+          showBidsModal={showBids}
+          setSowBidsModal={setShowBids}
+          selectedProduct={selectedProduct}
         />
       )}
     </>

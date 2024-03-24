@@ -107,6 +107,7 @@
   justify-content: center;
   padding: 20px !important;
   border-color: gray !important;
+  margin-top: 15px;
 }
 
 .ant-upload-select span {
@@ -124,13 +125,15 @@
   display: flex;
   justify-content: flex-end;
   gap: 2.5rem;
-  margin-top: 1.25rem;
 }
 .ImagesButton button{
-  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.ImagesButton button.ant-btn-default{
+  margin-right: -25px !important;
 }
 
 .ImagesButton .ant-btn-primary:disabled{
@@ -139,13 +142,21 @@
 
 .imgDownload{
   display: flex;
-  gap: 2;
-  border: 1px solid #D1D5DB;
+  align-items: flex-end;
+  gap: 0.5rem; 
+  border: 1px solid #6B7280;
   border-radius: 0.25rem;
+  padding: 0.75rem; 
 }
 
 .imgDownload img{
   height: 5rem; 
   width: 5rem; 
   object-fit: cover;
+}
+
+
+
+.Bids h1{
+  font-size: 20px !important;
 }

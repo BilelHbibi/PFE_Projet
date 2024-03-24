@@ -25,6 +25,8 @@ import Profile from "../pages/AvantSign/Profile/Profile";
 import Client from "../pages/AvantSign/client/Client";
 import Spinner from "../components/ensemble/spinnerSign/Spinner";
 import { useSelector } from "react-redux";
+import Admin from "../pages/AvantSign/admin/Admin";
+import ProductInfo from "../pages/AvantSign/ProductInfo/ProductInfo";
 
 
 const Routers = () => {
@@ -65,6 +67,8 @@ const Routers = () => {
         {/* Avant Inscription */}
         <Route path="/client" element={<><ProtectedPage><Client/></ProtectedPage></>} />
         <Route path="/profile" element={<><ProtectedPage><Profile/></ProtectedPage></>} />
+        <Route path="/admin" element={<><ProtectedPage><Admin /></ProtectedPage></>} />
+        <Route path="/product/:id" element={<><ProtectedPage><ProductInfo /></ProtectedPage></>} />
 
       </Routes>
     </>

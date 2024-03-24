@@ -43,6 +43,11 @@ router.post("/login", async (req, res) => {
       throw new Error("Utilisateur non trouvé");
     }
 
+    //if user is active or not
+    if(user.status !== "active"){
+      throw new Error("the user account is blocked , please contact admin")
+    }
+
     //compare password
     const validPassword = await bcrypt.compare(
       req.body.password,
@@ -72,13 +77,46 @@ router.post("/login", async (req, res) => {
 });
 
 //get current user
-router.get("/get-current-user",authMiddleeware,async (req, res) => {
+router.get("/get-current-user", authMiddleeware, async (req, res) => {
   try {
     const user = await User.findById(req.body.userId);
     res.send({
       success: true,
       message: "User fetched successfully",
       data: user,
+    });
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+//get all users
+router.get("/get-users", authMiddleeware, async (req, res) => {
+  try {
+    const users = await User.find();
+    res.send({
+      success: true,
+      message: "User fetched successfully",
+      data: users,
+    });
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+//update user status
+router.put("/update-user-status/:id", authMiddleeware, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id,req.body)
+    res.send({
+      success: true,
+      message: "User status updated successfully",
     });
   } catch (error) {
     res.send({

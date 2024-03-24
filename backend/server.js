@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import usersRoute from "./routes/usersRoute.js";
 import productsRoute from "./routes/productsRoute.js";
+import bidsRoute from "./routes/bidsRoute.js";
 
 dotenv.config();
 const app = express();
@@ -21,7 +22,7 @@ const connectDB = async () => {
 };
 app.use("/api/users", usersRoute);
 app.use("/api/products", productsRoute);
-
+app.use("/api/bids", bidsRoute);
 
 app.listen(port, () => {
   connectDB();

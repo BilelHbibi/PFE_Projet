@@ -2,9 +2,10 @@ import { Button, Upload, message } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setLoader } from "../../../../redux/loadersSlice";
-import { UploadProductImage } from "../../../../apicalls/products";
+import { EditProduct, UploadProductImage } from "../../../../apicalls/products";
 
 const Images = ({ selectedProduct, setShowProductForm, getData }) => {
+  const [showPreview = false, setShowPreview] = useState(true);
   const [images = [], setImages] = useState(selectedProduct.images);
   const [file = null, setFile] = useState(null);
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
       dispatch(setLoader(true));
       if (response.success) {
         message.success(response.message);
+        setImages([...images, response.data]);
+        setShowPreview(false);
+        setFile(null);
         getData();
       } else {
         message.error(response.message);
@@ -30,25 +34,52 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
     }
   };
 
+  const deleteImage = async (image) => {
+    try {
+      const updatedImagesArray = images.filter((img) => img !== image);
+      const updatedProduct = { ...selectedProduct, images: updatedImagesArray };
+      const response = await EditProduct(selectedProduct._id, updatedProduct);
+      if (response.success) {
+        message.success(response.message);
+        setImages(updatedImagesArray);
+        getData();
+      } else {
+        message.error(response.message);
+      }
+      dispatch(setLoader(true));
+    } catch (error) {
+      dispatch(setLoader(false));
+      message.error(error.message);
+    }
+  };
+
   return (
     <>
+      <div style={{ display: "flex", gap: "1.25rem", marginBottom: "1.25rem" }}>
+        {images.map((image) => {
+          return (
+            <div className="imgDownload">
+              <img src={image} alt="" />
+              <i
+                className="ri-delete-bin-line"
+                onClick={() => {
+                  deleteImage(image);
+                }}
+                style={{ cursor: "pointer" }}
+              ></i>
+            </div>
+          );
+        })}
+      </div>
       <Upload
         listType="picture"
         beforeUpload={() => false}
         onChange={(info) => {
           setFile(info.file);
+          setShowPreview(true);
         }}
+        showUploadList={showPreview}
       >
-        <div style={{ display: "flex", gap: "5" }}>
-          {images.map((image) => {
-            return (
-              <div className="imgDownload">
-                <img src={image} alt="" />
-              </div>
-            );
-          })}
-        </div>
-
         <Button type="dashed">Upload Image</Button>
       </Upload>
 

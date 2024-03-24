@@ -1,0 +1,108 @@
+.ProductInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.ProductInfo .image {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ProductInfo .image img {
+  width: 100%;
+  height: 24rem;
+  object-fit: cover;
+  border-radius: 0.375rem;
+}
+
+.ProductInfo .image .images {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.ProductInfo .image .images img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.ProductInfo .image .images img.active {
+  border: 2px dashed #9e0e0e;
+}
+
+.ProductInfo .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ProductInfo .content h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: rgb(199, 30, 30);
+}
+
+.ProductInfo .content span {
+  font-size: 17px;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.ProductInfo .content .details {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductInfo .content .details button {
+  border: 1px solid gray;
+  background: none;
+  padding: 15px !important;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ProductInfo button:disabled {
+  border-color: rgb(185, 185, 185) !important;
+  color: rgb(185, 185, 185) !important;
+  background-color: rgba(128, 128, 128, 0.11) !important;
+}
+
+.ProductInfo .content .details button:hover {
+  color: rgb(194, 37, 37);
+  border-color: rgb(160, 36, 36);
+}
+
+.ProductInfo .content .detail {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.ProductInfo .time h2 {
+  color: #4b5563;
+  font-size: 22px;
+}
+.ProductInfo .time span {
+  color: #4b5563;
+  font-size: 18px;
+}
+
+.ProductInfo .content .bids {
+  border: 1px solid #D1D5DB;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.ProductInfo .content .bids div {
+  display: flex;
+  justify-content: space-between;
+  color: #374151;
+}
