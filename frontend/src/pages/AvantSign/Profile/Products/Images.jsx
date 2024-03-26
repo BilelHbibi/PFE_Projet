@@ -42,6 +42,7 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
       if (response.success) {
         message.success(response.message);
         setImages(updatedImagesArray);
+        setFile(null);
         getData();
       } else {
         message.error(response.message);
@@ -78,6 +79,7 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
           setFile(info.file);
           setShowPreview(true);
         }}
+        fileList={file ? [file] : []}
         showUploadList={showPreview}
       >
         <Button type="dashed">Upload Image</Button>

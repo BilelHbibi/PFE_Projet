@@ -43,6 +43,24 @@ const Products = () => {
   const columns = [
     {
       title: "Product",
+      dataIndex: "image",
+      render: (text, record) => {
+        return (
+          <img
+            src={record?.images?.length > 0 ? record.images[0] : ""}
+            alt=""
+            style={{
+              width: "5rem",
+              height: "5rem",
+              objectFit: "cover",
+              borderRadius: "0.375rem",
+            }}
+          />
+        );
+      },
+    },
+    {
+      title: "Product",
       dataIndex: "name",
     },
     {
@@ -52,10 +70,7 @@ const Products = () => {
         return record.seller.name;
       },
     },
-    {
-      title: "Description",
-      dataIndex: "description",
-    },
+
     {
       title: "Price",
       dataIndex: "price",

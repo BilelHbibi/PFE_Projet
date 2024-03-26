@@ -78,6 +78,9 @@ a {
 ul {
   list-style: none;
 }
+p{
+  margin-bottom: 0 !important;
+}
 
 table {
   border: 1px solid #a1a1a1 !important;
@@ -91,6 +94,12 @@ i {
 
 .max-width{
   max-width: max-content !important;
+}
+
+h1{
+  font-size: 18px !important;
+  margin-bottom: 0 !important;
+  font-weight: 600 !important;
 }
 
 @media only screen and (max-width: 992px) {

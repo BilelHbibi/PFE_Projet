@@ -7,6 +7,7 @@ import "../../../style/AvantSign/client.css";
 import Divider from "../../../components/ensemble/ProtectedPage/Divider";
 import { useNavigate } from "react-router-dom";
 import Filters from "./Filters";
+import moment from "moment";
 
 const Client = () => {
   const [showFilters, setShowFilters] = useState(true);
@@ -35,9 +36,8 @@ const Client = () => {
     }
   };
 
-
   useEffect(() => {
-    getData()
+    getData();
   }, [filters]);
 
   return (
@@ -56,8 +56,8 @@ const Client = () => {
             display: "flex",
             flexDirection: "column",
             gap: "1.25rem",
-            width:"100%",
-            margin:"0 20px"
+            width: "100%",
+            margin: "0 20px",
           }}
         >
           <div
@@ -69,7 +69,11 @@ const Client = () => {
                 onClick={() => setShowFilters(!showFilters)}
               ></i>
             )}
-            <input type="text" placeholder="Search products here ..." className="search" />
+            <input
+              type="text"
+              placeholder="Search products here ..."
+              className="search"
+            />
           </div>
 
           <div className={`content ${showFilters ? "grid4" : "grid5"}`}>
@@ -86,7 +90,11 @@ const Client = () => {
 
                   <div className="content">
                     <h1>{product.name}</h1>
-                    <p>{product.description}</p>
+                    <p>
+                      {product.age}
+                      {product.age === 1 ? " year" : " years"}{" "}
+                      old
+                    </p>
                     <Divider />
                     <span>$ {product.price}</span>
                   </div>

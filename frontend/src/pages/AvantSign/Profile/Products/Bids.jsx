@@ -26,6 +26,13 @@ const Bids = ({ showBidsModal, setSowBidsModal, selectedProduct }) => {
 
   const columns = [
     {
+      title: "Bid Placed On",
+      dataIndex: "createdAt",
+      render: (text, record) => {
+        return moment(text).format("DD-MM-YYYY hh:mm a");
+      },
+    },
+    {
       title: "Name",
       dataIndex: "name",
       render: (text, record) => {
@@ -52,7 +59,7 @@ const Bids = ({ showBidsModal, setSowBidsModal, selectedProduct }) => {
       dataIndex: "contactDetails",
       render: (text, record) => {
         return (
-          <div style={{marginTop:"10px"}}>
+          <div style={{ marginTop: "10px" }}>
             <p style={{ marginBottom: "5px" }}>Phone: {record.mobile}</p>
             <p>Email: {record.buyer.email}</p>
           </div>

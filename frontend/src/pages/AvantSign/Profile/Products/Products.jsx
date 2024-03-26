@@ -49,12 +49,26 @@ const Products = () => {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Product",
+      dataIndex: "image",
+      render: (text, record) => {
+        return (
+          <img
+            src={record?.images?.length > 0 ? record.images[0] : ""}
+            alt=""
+            style={{
+              width: "5rem",
+              height: "5rem",
+              objectFit: "cover",
+              borderRadius: "0.375rem",
+            }}
+          />
+        );
+      },
     },
     {
-      title: "Description",
-      dataIndex: "description",
+      title: "Name",
+      dataIndex: "name",
     },
     {
       title: "Price",
@@ -83,7 +97,9 @@ const Products = () => {
       dataIndex: "action",
       render: (text, record) => {
         return (
-          <div style={{ display: "flex", gap: "1.25rem",alignItems:"center" }}>
+          <div
+            style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}
+          >
             <i
               className="ri-delete-bin-line"
               onClick={() => {
@@ -101,7 +117,7 @@ const Products = () => {
             ></i>
 
             <span
-              style={{ textDecoration:"underline",cursor:"pointer" }}
+              style={{ textDecoration: "underline", cursor: "pointer" }}
               onClick={() => {
                 setSelectedProduct(record);
                 setShowBids(true);
