@@ -171,9 +171,7 @@ const Header = () => {
           {/* =============button start============= */}
           <div className="nav_right">
             <div className="nav_btns" ref={con}>
-              <Button className="btn secondary__btn">
-                <Link to="/inscription">Inscription</Link>
-              </Button>
+            
               <Button className="btn primary__btn">
                 <Link to="/connexion">Connexion</Link>
               </Button>

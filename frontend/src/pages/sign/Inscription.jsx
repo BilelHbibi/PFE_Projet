@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
-import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import userIcon from "../../assets/images/sign/user.png";
 import loginImg from "../../assets/images/sign/inscription.png";
 import "../../style/login.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, message } from "antd";
-import { RegisterUser } from "../../apicalls/users";
+import { useNavigate } from "react-router-dom";
+import { Form, Radio, message } from "antd";
+import { GetCurrentUser, RegisterUser } from "../../apicalls/users";
 import { useDispatch } from "react-redux";
 import { setLoader } from "../../redux/loadersSlice";
-import Header from "../../components/header/Header";
 
 const rules = [
   {
@@ -20,39 +18,63 @@ const rules = [
 const Inscription = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
+
   const onFinish = async (values) => {
     try {
       dispatch(setLoader(true));
       const payload = {
-        name: values.nom, // Use values.nom for the name field
+        name: values.nom,
         email: values.email,
         password: values.password,
+        role: values.role,
       };
       const response = await RegisterUser(payload);
       dispatch(setLoader(false));
       if (response.success) {
-        navigate("/connexion");
-        message.success("Inscription réussie"); // Show success message
+        message.success("Inscription réussie");
+        form.resetFields();
       } else {
         throw new Error(response.message);
       }
     } catch (error) {
       dispatch(setLoader(false));
-      message.error(error.message); // Show error message
+      message.error(error.message);
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/client");
-    }
-  }, []);
+    const checkUserRole = async () => {
+      if (localStorage.getItem("token")) {
+        try {
+          dispatch(setLoader(true));
+          const response = await GetCurrentUser(); // Obtenez les détails de l'utilisateur
+          dispatch(setLoader(false));
+          if (
+            response.success &&
+            (response.data.role === "user" ||
+              response.data.role === "fournisseur")
+          ) {
+            // Redirection basée sur le rôle de l'utilisateur
+            const redirectPath =
+              response.data.role === "user" ? "/client" : "/client";
+            navigate(redirectPath);
+          }
+        } catch (error) {
+          dispatch(setLoader(false));
+          console.error(
+            "Erreur lors de la récupération des données de l'utilisateur",
+            error
+          );
+        }
+      }
+    };
 
+    checkUserRole();
+  }, [dispatch, navigate]);
   return (
     <>
-      <Header />
       <div className="container">
-        <Breadcrumbs />
         <div className="login inscription">
           <div className="login__img">
             <img src={loginImg} alt="" />
@@ -62,7 +84,7 @@ const Inscription = () => {
               <img src={userIcon} alt="" />
             </div>
             <h2>Inscription</h2>
-            <Form className="input" onFinish={onFinish}>
+            <Form className="input" onFinish={onFinish} form={form}>
               <Form.Item name="nom" rules={rules}>
                 <input type="text" placeholder="Entrer votre nom" />
               </Form.Item>
@@ -75,17 +97,17 @@ const Inscription = () => {
                   placeholder="Entrer votre mot de passe"
                 />
               </Form.Item>
-              <button className="btn secondary__btn auth__btn" type="submit">
+
+              <Form.Item name="role" rules={rules}>
+                <Radio.Group>
+                  <Radio value={"Client"}>Client</Radio>
+                  <Radio value={"Fournisseur"}>Fournisseur</Radio>
+                </Radio.Group>
+              </Form.Item>
+              <button className="secondary__btn auth__btn" type="submit">
                 Créer votre compte
               </button>
             </Form>
-
-            <p className="login__p">
-              Vous avez déja un compte ?
-              <span className="login__span">
-                <Link to="/connexion"> Connexion</Link>
-              </span>
-            </p>
           </div>
         </div>
       </div>

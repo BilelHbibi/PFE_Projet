@@ -60,7 +60,7 @@
   font-size: 16px;
   color: black;
   outline: none;
-  font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .login .ant-col{
@@ -91,19 +91,75 @@
   text-decoration: none;
 }
 
-.inscription {
-  height: 470px;
-}
 
-.inscription p {
-  font-size: 16px;
-  margin-top: 15px;
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-form-item{
+  margin-bottom: 10px;
 }
 
 
 .login .ant-form-item-explain-error,
 .inscription .ant-form-item-explain-error{
   color: white !important;
+}
+
+.inscription {
+  height: 500px;
+  margin-top: 120px;
+}
+
+
+.inscription .login__form{
+  background-color: rgb(216, 63, 63);
+}
+
+.inscription h2{
+  margin-top: 40px;
+}
+.inscription .input{
+  margin-top: 15px;
+  text-align: center;
+  margin-top: 8px;
+
+}
+
+
+.inscription .input input{
+  margin-bottom: 0;
+  width: 90%;
+}
+.inscription .auth__btn{
+  width: 92%;
+  margin-left: 5px;
+  margin-top: 10px;
+  border-radius: 5px !important;
+}
+
+.inscription .ant-form-item-explain-error{
+  text-align: start;
+  margin-left: 17px;
+  margin-bottom: -8px;
+}
+
+.inscription .ant-radio-group {
+  display: flex ;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inscription .ant-radio-group span{
+  color: #fff;
+  font-size: 18px;
+}
+
+.inscription .ant-radio-checked .ant-radio-inner {
+  color: black !important;
+  border-color: black !important;
+  background-color: black !important;
+}
+
+.inscription .ant-radio-checked::after{
+  border: 1px solid black !important;
 }
 
 @media only screen and (max-width: 900px) {

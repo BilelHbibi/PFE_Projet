@@ -45,7 +45,9 @@ textarea:focus {
   border: none !important;
   border-radius: 50px !important;
   padding: 0.4rem 1.5rem !;
+  outline: none !important;
 }
+
 
 .primary__btn a {
   font-size: 1.1rem;
@@ -60,7 +62,9 @@ textarea:focus {
   color: #0b2727 !important;
   border: none !important;
   font-weight: 500 !important;
+  outline: none !important;
 }
+
 
 .secondary__btn a {
   text-decoration: none;

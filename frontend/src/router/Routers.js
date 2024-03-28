@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import FinanceClass from "../pages/Finance/FinanceClass";
 import FinanceMoura from "../pages/Finance/FinanceMoura";
@@ -23,18 +23,24 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import Profile from "../pages/AvantSign/Profile/Profile";
 import Client from "../pages/AvantSign/client/Client";
-import Spinner from "../components/ensemble/spinnerSign/Spinner";
 import { useSelector } from "react-redux";
 import Admin from "../pages/AvantSign/admin/Admin";
 import ProductInfo from "../pages/AvantSign/ProductInfo/ProductInfo";
+import Fournisseur from "../pages/AvantSign/fournisseur/Fournisseur";
+
+import Spinner from "../components/ensemble/spinnerSign/Spinner";
+import Preloader from "../Preloader/Preloader";
 
 
 const Routers = () => {
-       const { loading } = useSelector((state) => state.loaders);
+  const loading = useSelector((state) => state.loaders.loading);
+  const location = useLocation();
+ 
 
   return (
     <>
-        {loading && <Spinner size="large" />}
+      {(location.pathname === "/" || location.pathname === "/home") && <Preloader />}
+      {loading && location.pathname !== "/" && location.pathname !== "/home" && <Spinner />}
       <Routes>
         <Route path="/" element={<><Header/><Navigate to="/home" /><Footer/></>} />
         <Route path="/finance" element={<><Header/><Navigate to="/home" /><Footer/></>} />
@@ -49,7 +55,7 @@ const Routers = () => {
         <Route path="/Présentation-Générale" element={<><Header/><Apropos/><Footer/></>} />
         <Route path="/contact" element={<><Header/><Contact/><Footer/></>} />
         <Route path="/connexion" element={<><Connexion/><Footer/></>} />
-        <Route path="/inscription" element={<><Inscription/><Footer/></>} />
+        <Route path="/inscription" element={<><ProtectedPage><Inscription/></ProtectedPage></>} />
         
 
         {/* for actualité */}
@@ -61,6 +67,7 @@ const Routers = () => {
         <Route path="/actualités/la-bts-bank-inaugure-un-centre-de-developpement-des-competences" element={<><Header/><BtsInaugure/><Footer/></>} />
         <Route path="/actualités/la-bts-bank-signe-une-convention-de-partenariat-dans-le-cadre-de-la-promotion..." element={<><Header/><BtsSign/><Footer/></>} />
 
+
         <Route path="/FAQ" element={<><Header/><AllFaqs/><Footer/></>} />
 
 
@@ -68,7 +75,9 @@ const Routers = () => {
         <Route path="/client" element={<><ProtectedPage><Client/></ProtectedPage></>} />
         <Route path="/profile" element={<><ProtectedPage><Profile/></ProtectedPage></>} />
         <Route path="/admin" element={<><ProtectedPage><Admin /></ProtectedPage></>} />
+        <Route path="/fournisseur" element={<><ProtectedPage><Fournisseur /></ProtectedPage></>} />
         <Route path="/product/:id" element={<><ProtectedPage><ProductInfo /></ProtectedPage></>} />
+        
 
       </Routes>
     </>

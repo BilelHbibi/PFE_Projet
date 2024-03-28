@@ -17,7 +17,7 @@ const userShema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default:"user",
+      required: true,
     },
     status: {
       type: String,

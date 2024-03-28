@@ -36,34 +36,34 @@
   }
 
   
-  .handle-preloader .animation-preloader .spinner {
+  .handle-preloader .animation-preloader .spinner2 {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     margin: 0 auto 45px auto;
   
     animation-name: zoomInOut;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
   
     -webkit-animation-name: zoomInOut;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 4s;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in-out;
   
     -moz-animation-name: zoomInOut;
-    -moz-animation-duration: 3s;
+    -moz-animation-duration: 4s;
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: ease-in-out;
   
     -ms-animation-name: zoomInOut;
-    -ms-animation-duration: 3s;
+    -ms-animation-duration: 4s;
     -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: ease-in-out;
   
     -o-animation-name: zoomInOut;
-    -o-animation-duration: 3s;
+    -o-animation-duration: 4s;
     -o-animation-iteration-count: infinite;
     -o-animation-timing-function: ease-in-out;
   }
@@ -122,20 +122,11 @@
   }
   
   .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(8):before {
-    animation-delay: 1.5s;
+    animation-delay: 1.7s;
   }
   
   
-  /**
-  animation: spinner 1s infinite linear;
-  .handle-preloader .loader-section {
-    background-color: #ffffff;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    width: calc(50% + 1px);
-  }
-  **/
+
   
   .preloader .loaded .animation-preloader {
     opacity: 0;
@@ -147,14 +138,14 @@
     color: #ffffff;
   }
   
-  .handle-preloader .animation-preloader .spinner {
+  .handle-preloader .animation-preloader .spinner2 {
     border: 4px solid #ffffff;
     /**border-top-color: rgba(255, 255, 255, 0.5); **/
   }
   
   
   /* Animation preloader */
-  @keyframes spinner {
+  @keyframes spinner2 {
     100%{
       transform: rotateZ(360deg);
     }
@@ -171,6 +162,7 @@
   
     25%,
     50% {
+      color: #ffffff;
       opacity: 1;
       transform: rotateY(0deg);
     }

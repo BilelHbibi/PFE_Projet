@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Badge, message } from "antd";
 import { GetCurrentUser } from "../../../apicalls/users";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoader } from "../../../redux/loadersSlice";
 import { setUser } from "../../../redux/usersSlice";
 import "../../../style/AvantSign/protectedPage.css";
-import Spinner from "../spinnerSign/Spinner";
 import Notifications from "./Notifications";
 import {
   GetAllNotifications,
@@ -14,7 +13,7 @@ import {
 } from "../../../apicalls/notification";
 
 const ProtectedPage = ({ children }) => {
-  const [notifications = [], setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const { user } = useSelector((state) => state.users);
   const navigate = useNavigate();
@@ -69,9 +68,10 @@ const ProtectedPage = ({ children }) => {
       validateToken();
       getNotifications();
     } else {
-      navigate("/connexion");
+      // Si aucun token n'est trouvé, redirigez l'utilisateur vers la page de connexion
+      navigate("/connexion", { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <>
@@ -90,55 +90,67 @@ const ProtectedPage = ({ children }) => {
               </div>
 
               {/* body */}
-              <div className="name">
-                <span
-                  onClick={() => {
-                    if (user.role === "user") {
-                      navigate("/profile");
-                    } else {
-                      navigate("/admin");
+              <div className="personnelle">
+                {/* Condition pour n'afficher le bouton Inscription que si le role n'est ni 'client' ni 'fournisseur' */}
+                {user.role !== "client" && user.role !== "fournisseur" && (
+                  <div className="btn-inscription">
+                    <button onClick={() => navigate("/inscription")}>
+                      <span>Inscription</span>
+                    </button>
+                  </div>
+                )}
+
+                <div className="name">
+                  <span
+                    onClick={() => {
+                      if (user.role === "user") {
+                        navigate("/client");
+                      } else if (user.role === "fournisseur") {
+                        navigate("/profile");
+                      } else {
+                        navigate("/admin");
+                      }
+                    }}
+                  >
+                    {user.name}
+                  </span>
+
+                  <Badge
+                    count={
+                      notifications?.filter(
+                        (notification) => !notification.read
+                      ).length
                     }
-                  }}
-                >
-                  {user.name}
-                </span>
+                    onClick={() => {
+                      readNotifications();
+                      setShowNotifications(true);
+                    }}
+                  >
+                    <Avatar
+                      size="circle"
+                      icon={<i className="ri-notification-2-line"></i>}
+                    />
+                  </Badge>
 
-                <Badge
-                  count={
-                    notifications?.filter((notification) => !notification.read)
-                      .length
-                  }
-                  onClick={() => {
-                    readNotifications();
-                    setShowNotifications(true);
-                  }}
-                >
-                  <Avatar
-                    size="circle"
-                    icon={<i className="ri-notification-2-line"></i>}
-                  />
-                </Badge>
-
-                <i
-                  className="ri-logout-box-r-line"
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    navigate("/connexion");
-                  }}
-                ></i>
+                  <i
+                    className="ri-logout-box-r-line"
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      navigate("/connexion");
+                    }}
+                  ></i>
+                </div>
               </div>
             </div>
 
             <div>{children}</div>
 
-            {
-              <Notifications
-                notifications={notifications}
-                reloadNotifications={getNotifications}
-                showNotifications={showNotifications}
-                setShowNotifications={setShowNotifications}
-              />
-            }
+            <Notifications
+              notifications={notifications}
+              reloadNotifications={getNotifications}
+              showNotifications={showNotifications}
+              setShowNotifications={setShowNotifications}
+            />
           </div>
         </>
       )}

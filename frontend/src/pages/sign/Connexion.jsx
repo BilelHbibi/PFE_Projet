@@ -73,7 +73,7 @@ const Connexion = () => {
                   placeholder="Entrer votre mot de passe"
                 />
               </Form.Item>
-              <button className="btn secondary__btn auth__btn" type="submit">
+              <button className="secondary__btn auth__btn" type="submit">
                 Connexion
               </button>
             </Form>

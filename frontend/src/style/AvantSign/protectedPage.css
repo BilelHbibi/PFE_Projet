@@ -5,7 +5,7 @@
   width: 100%;
   height: 80px;
   padding: 0 30px;
-  background-color: #9b3535ee;
+  background-color: #db5353ee;
 }
 
 .ProtectedPage2 .header h1 {
@@ -13,9 +13,8 @@
   color: white;
 }
 
-.ProtectedPage2 .name {
-  background-color: white;
-  padding: 8px 22px !important;
+.ProtectedPage2 .personnelle {
+  
   line-height: 20px;
   border-radius: 5px;
   display: flex;
@@ -24,21 +23,59 @@
   gap: 0.25rem;
 }
 
-.ProtectedPage2 .name span {
+.ProtectedPage2 .personnelle .name {
+ background-color: white;
+ padding: 8px 22px !important;
+}
+
+.ProtectedPage .btn-inscription{
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.ProtectedPage .btn-inscription button{
+  padding:13px 22px !important;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.ProtectedPage .btn-inscription button span{
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+  text-transform:inherit;
+  letter-spacing: 0.2px;
+}
+
+.ProtectedPage .btn-inscription button span:hover{
+  color: #db5353ee;
+}
+
+
+
+.ProtectedPage2 .personnelle span {
   text-decoration: underline;
   cursor: pointer;
   margin-left: 2px;
   text-transform: uppercase;
   font-weight: 600;
+  margin-right: 10px;
 }
 
-.ProtectedPage2 .name i:nth-child(3) {
-  padding-left: 1.3rem;
+.ProtectedPage2 .personnelle i:nth-child(1) {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+
+.ProtectedPage2 .personnelle i:nth-child(3) {
+  padding-left: 0;
   cursor: pointer;
   font-weight: 500;
-}
-.ProtectedPage2 .name i:nth-child(1) {
-  font-weight: 300;
 }
 
 .ProtectedPage div:last-child {
