@@ -4,7 +4,7 @@
   justify-content: flex-end;
 }
 
-.ant-btn{
+.ant-btn {
   transition: none !important;
   touch-action: none !important;
 }
@@ -132,37 +132,56 @@
   justify-content: flex-end;
   gap: 2.5rem;
 }
-.ImagesButton button{
+.ImagesButton button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ImagesButton button.ant-btn-default{
+.ImagesButton button.ant-btn-default {
   margin-right: -25px !important;
 }
 
-.ImagesButton .ant-btn-primary:disabled{
+.ImagesButton .ant-btn-primary:disabled {
   background-color: rgba(250, 3, 3, 0.281) !important;
 }
 
-.imgDownload{
+.imgDownload {
   display: flex;
   align-items: flex-end;
-  gap: 0.5rem; 
-  border: 1px solid #6B7280;
+  gap: 0.5rem;
+  border: 1px solid #6b7280;
   border-radius: 0.25rem;
-  padding: 0.75rem; 
+  padding: 0.75rem;
 }
 
-.imgDownload img{
-  height: 5rem; 
-  width: 5rem; 
+.imgDownload img {
+  height: 5rem;
+  width: 5rem;
   object-fit: cover;
 }
 
-
-
-.Bids h1{
+.Bids h1 {
   font-size: 20px !important;
+}
+
+.profile2 {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.profile2 span {
+  display: flex;
+  justify-content: space-between ;
+  color: black;
+  font-size: 1.25rem;
+line-height: 1.75rem; 
+
+}
+
+.profile2 span label{
+  font-size: 1.25rem;
+line-height: 1.75rem; 
+font-weight: 500;
 }

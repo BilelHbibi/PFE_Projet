@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddProduct, EditProduct } from "../../../../apicalls/products";
 import { setLoader } from "../../../../redux/loadersSlice.js";
 import Images from "./Images.jsx";
+import { AddNotification } from "../../../../apicalls/notification.jsx";
 
 const additionalThings = [
   {

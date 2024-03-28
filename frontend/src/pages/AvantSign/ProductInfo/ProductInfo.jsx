@@ -148,7 +148,7 @@ const ProductInfo = () => {
               </div>
 
               {product.showBidsOnProductPage &&
-                product.bids.map((bid) => {
+                product?.bids?.map((bid) => {
                   return (
                     <div className="bids">
                       <div>

@@ -104,7 +104,7 @@ const ProtectedPage = ({ children }) => {
                   <span
                     onClick={() => {
                       if (user.role === "Client") {
-                        navigate("/client");
+                        navigate("/profileClient");
                       } else if (user.role === "Fournisseur") {
                         navigate("/profile");
                       } else {

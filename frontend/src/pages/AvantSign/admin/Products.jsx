@@ -67,7 +67,7 @@ const Products = () => {
       title: "Seller",
       dataIndex: "Seller",
       render: (text, record) => {
-        return record.seller ? record.seller.name : "No Seller";
+        return record.seller.name ;
       },
     },
 

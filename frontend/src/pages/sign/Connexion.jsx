@@ -78,12 +78,6 @@ const Connexion = () => {
               </button>
             </Form>
 
-            <p className="login__p">
-              Vous navez pas de compte ?
-              <span className="login__span">
-                <Link to="/inscription"> Inscrire</Link>
-              </span>
-            </p>
           </div>
         </div>
       </div>

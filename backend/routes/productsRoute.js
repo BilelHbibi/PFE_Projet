@@ -4,12 +4,36 @@ import Product from "../models/productModel.js";
 import authMiddleeware from "../middlwares/authMiddleeware.js";
 import cloudinary from "../config/cloudinaryConfig.js";
 import multer from "multer";
+import User from "../models/userModel.js";
+import Notification from "../models/notificationModel.js";
 
 // add a new product
 router.post("/add-product", authMiddleeware, async (req, res) => {
   try {
+    const userId = req.body.userId; // L'ID de l'utilisateur est déjà ajouté par le middleware
+    const user = await User.findById(userId); // Chercher l'utilisateur pour obtenir son nom
+    
+    if (!user) {
+      return res.status(404).send({ success: false, message: "User not found" });
+    }
+
     const newProduct = new Product(req.body);
     await newProduct.save();
+
+    // send notification to admis
+    const admins = await User.find({ role: "admin" });
+    admins.forEach(async (admin) => {
+      const newNotification = new Notification({
+        user: admin._id,
+        message: `New product added by ${user.name}`,
+        title: "New Product",
+        onClick: `/admin`,
+        read: false,
+      });
+      await newNotification.save();
+    });
+
+
     res.send({
       success: true,
       message: "Product added successfuly",
@@ -151,7 +175,21 @@ router.post(
 router.put("/update-product-status/:id", authMiddleeware, async (req, res) => {
   try {
     const { status } = req.body;
-    await Product.findByIdAndUpdate(req.params.id, { status });
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {
+      status,
+    });
+
+    //send notification to seller
+    const newNotification = new Notification({
+      user: updatedProduct.seller,
+      message: `Your product ${updatedProduct.name} has been ${status}`,
+      title: "Product Status Updated",
+      onClick: `/profile`,
+      read: false,
+    });
+    await newNotification.save()
+
+    
     res.send({
       success: true,
       message: "Product status updated successfully",

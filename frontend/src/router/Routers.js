@@ -26,10 +26,9 @@ import Client from "../pages/AvantSign/client/Client";
 import { useSelector } from "react-redux";
 import Admin from "../pages/AvantSign/admin/Admin";
 import ProductInfo from "../pages/AvantSign/ProductInfo/ProductInfo";
-import Fournisseur from "../pages/AvantSign/fournisseur/Fournisseur";
-
 import Spinner from "../components/ensemble/spinnerSign/Spinner";
 import Preloader from "../Preloader/Preloader";
+import ProfileClient from "../ProfileClientBids/ProfileClient";
 
 
 const Routers = () => {
@@ -75,8 +74,8 @@ const Routers = () => {
         <Route path="/client" element={<><ProtectedPage><Client/></ProtectedPage></>} />
         <Route path="/profile" element={<><ProtectedPage><Profile/></ProtectedPage></>} />
         <Route path="/admin" element={<><ProtectedPage><Admin /></ProtectedPage></>} />
-        <Route path="/fournisseur" element={<><ProtectedPage><Fournisseur /></ProtectedPage></>} />
         <Route path="/product/:id" element={<><ProtectedPage><ProductInfo /></ProtectedPage></>} />
+        <Route path="/profileClient" element={<><ProtectedPage><ProfileClient /></ProtectedPage></>} />
         
 
       </Routes>

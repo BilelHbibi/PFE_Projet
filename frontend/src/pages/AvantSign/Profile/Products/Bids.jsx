@@ -43,13 +43,7 @@ const Bids = ({ showBidsModal, setSowBidsModal, selectedProduct }) => {
       title: "Bid Amount",
       dataIndex: "bidAmount",
     },
-    {
-      title: "Bid Data",
-      dataIndex: "createdAt",
-      render: (text, record) => {
-        return moment(text).format("DD-MM-YYYY hh:mm a");
-      },
-    },
+
     {
       title: "Message",
       dataIndex: "message",

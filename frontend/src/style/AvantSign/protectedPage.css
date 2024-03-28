@@ -18,7 +18,7 @@
   line-height: 20px;
   border-radius: 5px;
   display: flex;
-  align-items: center;
+  align-items: center ;
   justify-content: space-evenly;
   gap: 0.25rem;
 }
@@ -26,6 +26,9 @@
 .ProtectedPage2 .personnelle .name {
  background-color: white;
  padding: 8px 22px !important;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .ProtectedPage .btn-inscription{
@@ -43,7 +46,7 @@
   border-radius: 5px;
 }
 
-.ProtectedPage .btn-inscription button span{
+.ProtectedPage .btn-inscription button span:first-child{
   font-weight: 600;
   font-size: 17px;
   text-decoration: none;
@@ -66,16 +69,24 @@
   margin-right: 10px;
 }
 
+
+.ProtectedPage2 :where(.css-dev-only-do-not-override-1ae8k9u).ant-badge .ant-badge-count{
+  max-width: 20px;
+  right: 5px;
+  top: 3px;
+}
+
+
+
+
 .ProtectedPage2 .personnelle i:nth-child(1) {
   font-weight: 300;
   font-size: 15px;
 }
 
 
-.ProtectedPage2 .personnelle i:nth-child(3) {
-  padding-left: 0;
-  cursor: pointer;
-  font-weight: 500;
+.ProtectedPage2 .personnelle .ri-logout-box-r-line {
+  font-size: 25px !important;
 }
 
 .ProtectedPage div:last-child {
