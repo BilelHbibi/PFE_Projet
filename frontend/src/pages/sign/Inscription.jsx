@@ -48,28 +48,23 @@ const Inscription = () => {
       if (localStorage.getItem("token")) {
         try {
           dispatch(setLoader(true));
-          const response = await GetCurrentUser(); // Obtenez les détails de l'utilisateur
+          const response = await GetCurrentUser();
           dispatch(setLoader(false));
-          if (
-            response.success &&
-            (response.data.role === "user" ||
-              response.data.role === "fournisseur")
-          ) {
-            // Redirection basée sur le rôle de l'utilisateur
-            const redirectPath =
-              response.data.role === "user" ? "/client" : "/client";
-            navigate(redirectPath);
+          if (response.success) {
+            // Assurez-vous que les chaînes de rôle correspondent à celles définies dans votre système
+            if (response.data.role === "Client") {
+              navigate("/client");
+            } else if (response.data.role === "Fournisseur") {
+              navigate("/profile");
+            }
+            // Ajoutez ici une autre condition pour d'autres rôles, si nécessaire
           }
         } catch (error) {
           dispatch(setLoader(false));
-          console.error(
-            "Erreur lors de la récupération des données de l'utilisateur",
-            error
-          );
         }
       }
     };
-
+  
     checkUserRole();
   }, [dispatch, navigate]);
   return (

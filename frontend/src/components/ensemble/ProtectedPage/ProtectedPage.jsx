@@ -92,7 +92,7 @@ const ProtectedPage = ({ children }) => {
               {/* body */}
               <div className="personnelle">
                 {/* Condition pour n'afficher le bouton Inscription que si le role n'est ni 'client' ni 'fournisseur' */}
-                {user.role !== "client" && user.role !== "fournisseur" && (
+                {user.role !== "Client" && user.role !== "Fournisseur" && (
                   <div className="btn-inscription">
                     <button onClick={() => navigate("/inscription")}>
                       <span>Inscription</span>
@@ -103,9 +103,9 @@ const ProtectedPage = ({ children }) => {
                 <div className="name">
                   <span
                     onClick={() => {
-                      if (user.role === "user") {
+                      if (user.role === "Client") {
                         navigate("/client");
-                      } else if (user.role === "fournisseur") {
+                      } else if (user.role === "Fournisseur") {
                         navigate("/profile");
                       } else {
                         navigate("/admin");
