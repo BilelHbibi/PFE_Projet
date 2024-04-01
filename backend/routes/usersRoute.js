@@ -84,7 +84,7 @@ router.get("/get-current-user", authMiddleeware, async (req, res) => {
     const user = await User.findById(req.body.userId);
     res.send({
       success: true,
-      message: "User fetched successfully",
+      message: "Utilisateur récupéré avec succès",
       data: user,
     });
   } catch (error) {
@@ -101,7 +101,7 @@ router.get("/get-users", authMiddleeware, async (req, res) => {
     const users = await User.find();
     res.send({
       success: true,
-      message: "User fetched successfully",
+      message: "Utilisateur récupéré avec succès",
       data: users,
     });
   } catch (error) {
@@ -118,7 +118,7 @@ router.put("/update-user-status/:id", authMiddleeware, async (req, res) => {
     await User.findByIdAndUpdate(req.params.id,req.body)
     res.send({
       success: true,
-      message: "User status updated successfully",
+      message: "Statut de l'utilisateur mis à jour avec succès",
     });
   } catch (error) {
     res.send({

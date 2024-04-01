@@ -21,12 +21,12 @@ const BidModal = ({ showBidModal, setShowBidModal, product, reloadData }) => {
       });
       dispatch(setLoader(false));
       if (response.success) {
-        message.success("Bid added successfully");
+        message.success("Offre ajoutée avec succès");
 
         //send notification to seller
         await AddNotification({
-          title: "A New Bid has been placed",
-          message: `A New Bid has been placed on your product ${product.name} by ${user.name} for $ ${values.bidAmount}`,
+          title: "Une nouvelle offre a été placée",
+          message: `Une nouvelle offre a été placée sur votre produit ${product.name} par ${user.name} pour $ ${values.bidAmount}`,
           user: product.seller._id,
           onClick: `/profile`,
           read: false,

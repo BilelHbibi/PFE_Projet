@@ -26,35 +26,28 @@ const UserBids = () => {
 
   const columns = [
     {
-      title: "Product",
+      title: "Produit",
       dataIndex: "product",
       render: (text, record) => {
         return record.product?.name;
       },
     },
     {
-      title: "Bid Placed On",
+      title: "Date de l'Offre",
       dataIndex: "createdAt",
       render: (text, record) => {
         return moment(text).format("DD-MM-YYYY hh:mm a");
       },
     },
     {
-      title: "Seller",
+      title: "Vendeur",
       dataIndex: "seller",
       render: (text, record) => {
         return record.seller?.name;
       },
     },
     {
-        title: "offered Price",
-        dataIndex: "offeredPrice",
-        render: (text, record) => {
-            return record.seller?.name;
-        },
-      },
-    {
-      title: "Bid Amount",
+      title: "Montant de l'Offre",
       dataIndex: "bidAmount",
     },
 
@@ -63,7 +56,7 @@ const UserBids = () => {
       dataIndex: "message",
     },
     {
-      title: "Contact Details",
+      title: "Détails de Contact",
       dataIndex: "contactDetails",
       render: (text, record) => {
         return (

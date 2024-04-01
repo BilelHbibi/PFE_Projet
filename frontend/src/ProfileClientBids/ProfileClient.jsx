@@ -12,19 +12,19 @@ const ProfileClient = () => {
     <>
       <div>
         <Tabs defaultActiveKey="1" className="custom-tabs">
-          <Tabs.TabPane tab="My Bids" key="1">
+          <Tabs.TabPane tab="Mes Offres" key="1">
             <UserBids />
           </Tabs.TabPane>
-          <Tabs.TabPane tab="General" key="2">
+          <Tabs.TabPane tab="général" key="2">
             <div className="profile2">
               <span>
-                Name: <label>{user.name}</label>
+                Nom: <label>{user.name}</label>
               </span>
               <span>
                 Email: <label>{user.email}</label>
               </span>
               <span>
-                Created At:{" "}
+              Créé le:{" "}
                 <label>{moment(user.createdAt).format("MMM D , YYYY hh:mm A")}</label>
               </span>
             </div>

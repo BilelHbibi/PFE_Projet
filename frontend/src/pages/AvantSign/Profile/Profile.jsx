@@ -3,30 +3,37 @@ import { Tabs } from "antd";
 import Products from "./Products/Products";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import "../../../style/AvantSign/profile.css"
+import "../../../style/AvantSign/profile.css";
+import ActTamkin from "./Act Document/ActTamkin";
 
 const Profile = () => {
-  const {user} = useSelector((state)=>state.users)
+  const { user } = useSelector((state) => state.users);
   return (
     <>
       <div>
         <Tabs defaultActiveKey="1" className="custom-tabs">
-          <Tabs.TabPane tab="Products" key="1">
+          <Tabs.TabPane tab="Produits" key="1">
             <Products />
           </Tabs.TabPane>
 
-          <Tabs.TabPane tab="General" key="2" >
+          <Tabs.TabPane tab="général" key="2">
             <div className="profile2">
               <span>
-                Name: <label>{user.name}</label>
+                Nom: <label>{user.name}</label>
               </span>
               <span>
                 Email: <label>{user.email}</label>
               </span>
               <span>
-                Created At:{" "} <label>{moment(user.createdAt).format("MMM D , YYYY hh:mm A")}</label>
+                Créé le:{" "}
+                <label>
+                  {moment(user.createdAt).format("MMM D , YYYY hh:mm A")}
+                </label>
               </span>
             </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="Envoyé Act tamkin" key="3">
+            <ActTamkin />
           </Tabs.TabPane>
         </Tabs>
       </div>

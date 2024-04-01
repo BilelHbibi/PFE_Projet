@@ -82,7 +82,7 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
         fileList={file ? [file] : []}
         showUploadList={showPreview}
       >
-        <Button type="dashed">Upload Image</Button>
+        <Button type="dashed">Télécharger Une Image</Button>
       </Upload>
 
       <div className="ImagesButton">
@@ -92,11 +92,11 @@ const Images = ({ selectedProduct, setShowProductForm, getData }) => {
             setShowProductForm(false);
           }}
         >
-          Cancel
+          Annuler 
         </Button>
 
         <Button type="primary" onClick={upload} disabled={!file}>
-          Upload
+        Télécharger
         </Button>
       </div>
     </>

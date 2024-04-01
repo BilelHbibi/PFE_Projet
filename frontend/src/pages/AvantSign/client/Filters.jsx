@@ -2,46 +2,51 @@ import React from "react";
 import { Input } from "antd";
 const categories = [
   {
-    name: "Electronics",
+    name: "Electronique",
     value: "electronics",
   },
   {
-    name: "Home",
-    value: "home",
+    name: "Alimentation",
+    value: "alimentation",
   },
   {
-    name: "Fashion",
-    value: "fashion",
+    name: "Maison",
+    value: "maison",
   },
   {
     name: "Sports",
     value: "sports",
   },
   {
-    name: "Books",
-    value: "books",
+    name: "Santé",
+    value: "santé",
   },
+  {
+    name: "Art & Collectibles",
+    value: "art-collectibles",
+  },
+  
 ];
 
 const ages = [
   {
-    name: "0-2 years old",
+    name: "0-2 Ans",
     value: "0-2",
   },
   {
-    name: "3-5 years old",
+    name: "3-5 Ans",
     value: "3-5",
   },
   {
-    name: "6-8 years old",
+    name: "6-8 Ans",
     value: "6-8",
   },
   {
-    name: "9-12 years old",
+    name: "9-12 Ans",
     value: "9-12",
   },
   {
-    name: "13+ years old",
+    name: "13+ Ans",
     value: "12-20",
   },
 ];

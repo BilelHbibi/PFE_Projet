@@ -42,7 +42,7 @@ const Products = () => {
 
   const columns = [
     {
-      title: "Product",
+      title: "Produit",
       dataIndex: "image",
       render: (text, record) => {
         return (
@@ -60,11 +60,11 @@ const Products = () => {
       },
     },
     {
-      title: "Product",
+      title: "Nom",
       dataIndex: "name",
     },
     {
-      title: "Seller",
+      title: "Vendeur",
       dataIndex: "Seller",
       render: (text, record) => {
         return record.seller.name ;
@@ -72,15 +72,15 @@ const Products = () => {
     },
 
     {
-      title: "Price",
+      title: "Prix",
       dataIndex: "price",
     },
     {
-      title: "Category",
+      title: "Catégorie",
       dataIndex: "category",
     },
     {
-      title: "Age",
+      title: "Âge",
       dataIndex: "age",
     },
     {
@@ -91,7 +91,7 @@ const Products = () => {
       },
     },
     {
-      title: "Added On",
+      title: "Temps D'Ajout",
       dataIndex: "createdAt",
       render: (text, record) =>
         moment(record.createdAt).format("DD-MM-YYYY hh:mm A"),
@@ -103,36 +103,36 @@ const Products = () => {
         const { status, _id } = record;
         return (
           <div style={{ display: "flex", gap: "0.75rem" }}>
-            {status === "pending" && (
+            {status === "En Attente" && (
               <span
                 style={{ textDecoration: "underline", cursor: "pointer" }}
                 onClick={() => {
-                  onStatusUpdate(_id, "approved");
+                  onStatusUpdate(_id, "Approuvé");
                 }}
               >
-                Approve
+                Approuver
               </span>
             )}
 
-            {status === "pending" && (
+            {status === "En Attente" && (
               <span
                 style={{ textDecoration: "underline", cursor: "pointer" }}
                 onClick={() => {
-                  onStatusUpdate(_id, "rejected");
+                  onStatusUpdate(_id, "Rejeter");
                 }}
               >
-                Reject
+                Rejeter 
               </span>
             )}
 
-            {status === "approved" && (
+            {status === "Approuvé" && (
               <span
                 style={{ textDecoration: "underline", cursor: "pointer" }}
                 onClick={() => {
                   onStatusUpdate(_id, "blocked");
                 }}
               >
-                Block
+                Bloqué
               </span>
             )}
 
@@ -140,10 +140,10 @@ const Products = () => {
               <span
                 style={{ textDecoration: "underline", cursor: "pointer" }}
                 onClick={() => {
-                  onStatusUpdate(_id, "approved");
+                  onStatusUpdate(_id, "Approuvé");
                 }}
               >
-                unblock
+                Débloqué
               </span>
             )}
           </div>

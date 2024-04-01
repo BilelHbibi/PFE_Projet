@@ -85,7 +85,7 @@ const ProtectedPage = ({ children }) => {
                   onClick={() => navigate("/client")}
                   style={{ cursor: "pointer" }}
                 >
-                  Market Place
+                  Commerce en Ligne
                 </h1>
               </div>
 

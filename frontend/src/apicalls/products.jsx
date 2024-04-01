@@ -90,9 +90,6 @@ export const UpdateProductStatus = async (id, status) => {
   }
 };
 
-
-
-
 //place a  new bid
 export const PlaceNewBid = async (payload) => {
   try {
@@ -119,3 +116,35 @@ export const GetAllBids = async (filters) => {
   }
 };
 
+// Accept a bid
+export const AcceptBid = async (payload) => {
+  try {
+    const response = await axiosInstance.post(
+      `/api/bids/accept-bid/${payload.bidId}`
+    );
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const RejectBid = async (bidId) => {
+  try {
+    const response = await axiosInstance.delete(
+      `/api/bids/reject-and-delete-bid/${bidId}`
+    );
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const GetBidDetails = async (bidId) => {
+  try {
+    const response = await axiosInstance.get(`/api/bids/bid-details/${bidId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch bid details:", error);
+    throw error;
+  }
+};

@@ -49,7 +49,7 @@ const Products = () => {
 
   const columns = [
     {
-      title: "Product",
+      title: "Produit",
       dataIndex: "image",
       render: (text, record) => {
         return (
@@ -67,27 +67,27 @@ const Products = () => {
       },
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
     },
     {
-      title: "Price",
+      title: "Prix",
       dataIndex: "price",
     },
     {
-      title: "Category",
+      title: "Catégorie",
       dataIndex: "category",
     },
     {
-      title: "Age",
+      title: "Âge",
       dataIndex: "age",
     },
     {
-      title: "Status",
+      title: "Statut",
       dataIndex: "status",
     },
     {
-      title: "Added On",
+      title: "Temps d'Ajout",
       dataIndex: "createdAt",
       render: (text, record) =>
         moment(record.createdAt).format("DD-MM-YYYY hh:mm A"),
@@ -123,7 +123,7 @@ const Products = () => {
                 setShowBids(true);
               }}
             >
-              Show Bids
+              Afficher Les Offres
             </span>
           </div>
         );
@@ -144,7 +144,7 @@ const Products = () => {
             setShowProductForm(true);
           }}
         >
-          Add Product
+          Ajouter Un Produit
         </Button>
       </div>
 
@@ -162,7 +162,7 @@ const Products = () => {
       {showBids && (
         <Bids
           showBidsModal={showBids}
-          setSowBidsModal={setShowBids}
+          setShowBidsModal={setShowBids}
           selectedProduct={selectedProduct}
         />
       )}

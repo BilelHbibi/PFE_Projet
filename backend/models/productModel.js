@@ -58,7 +58,7 @@ const productShema = new mongoose.Schema(
     },
     status: {
       type: String,
-      ref: "pending",
+      ref: " En Attente",
       required: true,
     },
   },

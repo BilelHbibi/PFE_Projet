@@ -25,8 +25,8 @@ router.post("/add-product", authMiddleeware, async (req, res) => {
     admins.forEach(async (admin) => {
       const newNotification = new Notification({
         user: admin._id,
-        message: `New product added by ${user.name}`,
-        title: "New Product",
+        message: `Nouveau produit ajouté par ${user.name}`,
+        title: "Nouveau Produit",
         onClick: `/admin`,
         read: false,
       });
@@ -36,7 +36,7 @@ router.post("/add-product", authMiddleeware, async (req, res) => {
 
     res.send({
       success: true,
-      message: "Product added successfuly",
+      message: "Produit ajouté avec succès",
     });
   } catch (error) {
     res.send({
@@ -45,6 +45,7 @@ router.post("/add-product", authMiddleeware, async (req, res) => {
     });
   }
 });
+
 
 //get product by id
 router.get("/get-product-by-id/:id", async (req, res) => {
@@ -109,7 +110,7 @@ router.put("/edit-product/:id", authMiddleeware, async (req, res) => {
     await Product.findByIdAndUpdate(req.params.id, req.body);
     res.send({
       success: true,
-      message: "Product updated successfully",
+      message: "Produit mis à jour avec succès",
     });
   } catch (error) {
     res.send({
@@ -125,7 +126,7 @@ router.delete("/delete-product/:id", authMiddleeware, async (req, res) => {
     await Product.findByIdAndDelete(req.params.id);
     res.send({
       success: true,
-      message: "Product deleted successfully",
+      message: "Produit supprimé avec succès",
     });
   } catch (error) {
     res.send({
@@ -159,7 +160,7 @@ router.post(
       });
       res.send({
         success: true,
-        message: "Image upladed successfully",
+        message: "Image téléchargée avec succès",
         data: result.secure_url,
       });
     } catch (error) {
@@ -182,8 +183,8 @@ router.put("/update-product-status/:id", authMiddleeware, async (req, res) => {
     //send notification to seller
     const newNotification = new Notification({
       user: updatedProduct.seller,
-      message: `Your product ${updatedProduct.name} has been ${status}`,
-      title: "Product Status Updated",
+      message: `Votre produit ${updatedProduct.name} a été ${status}`,
+      title: "Statut du Produit Mis à Jour",
       onClick: `/profile`,
       read: false,
     });
@@ -192,7 +193,7 @@ router.put("/update-product-status/:id", authMiddleeware, async (req, res) => {
     
     res.send({
       success: true,
-      message: "Product status updated successfully",
+      message: "Statut du produit mis à jour avec succès",
     });
   } catch (error) {
     res.send({

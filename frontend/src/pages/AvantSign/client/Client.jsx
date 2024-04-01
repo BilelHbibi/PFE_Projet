@@ -12,13 +12,13 @@ import moment from "moment";
 const Client = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
-    status: "approved",
+    status: "Approuvé",
     category: [],
     age: [],
   });
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
 
@@ -39,6 +39,11 @@ const Client = () => {
   useEffect(() => {
     getData();
   }, [filters]);
+
+  // Filter products based on search term matching the start of the product name
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -72,12 +77,13 @@ const Client = () => {
             <input
               type="text"
               placeholder="Search products here ..."
-              className="search"
+              className={`search ${showFilters ? "search4" : "search5"}`}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           <div className={`content ${showFilters ? "grid4" : "grid5"}`}>
-            {products?.map((product) => {
+            {filteredProducts.map((product) => {
               return (
                 <div
                   className="card"
@@ -92,8 +98,7 @@ const Client = () => {
                     <h1>{product.name}</h1>
                     <p>
                       {product.age}
-                      {product.age === 1 ? " year" : " years"}{" "}
-                      old
+                      {product.age === 1 ? " ans" : " ans"}{" "}
                     </p>
                     <Divider />
                     <span>$ {product.price}</span>

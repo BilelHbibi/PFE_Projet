@@ -62,7 +62,7 @@ const ProductInfo = () => {
 
             <Divider />
             <div className="time">
-              <h2>Added On</h2>
+              <h2>Date d'Ajout</h2>
               <span>
                 {moment(product.createdAt).format("MMM D , YYYY hh:mm A")}
               </span>
@@ -73,40 +73,40 @@ const ProductInfo = () => {
           <div className="content">
             <div>
               <h1>{product.name}</h1>
-              <span>{product.description}</span>
+              <span style={{fontWeight:"400"}}>{product.description}</span>
             </div>
 
             <Divider />
             <div className="details">
-              <h1>Product Details</h1>
+              <h1>Détails du Produit</h1>
               <div className="detail">
-                <span>Price</span>
+                <span>Prix</span>
                 <span>${product.price}</span>
               </div>
               <div className="detail">
-                <span>Category</span>
+                <span>Catégorie</span>
                 <span style={{ textTransform: "uppercase" }}>
                   {product.category}
                 </span>
               </div>
               <div className="detail">
-                <span>Bill Available</span>
+                <span>Facture Disponible</span>
                 <span>{product.billAvailable ? "Yes" : "No"}</span>
               </div>
               <div className="detail">
-                <span>Box Available</span>
+                <span>Boîte Disponible</span>
                 <span>{product.boxAvailable ? "Yes" : "No"}</span>
               </div>
               <div className="detail">
-                <span>Accessories Available</span>
+                <span>Accessoires Disponibles</span>
                 <span>{product.accessoriesAvailable ? "Yes" : "No"}</span>
               </div>
               <div className="detail">
-                <span>Warranty Available</span>
+                <span>Garantie Disponible</span>
                 <span>{product.warrantyAvailable ? "Yes" : "No"}</span>
               </div>
               <div className="detail">
-                <span>Purchased Yeaars</span>
+                <span>Année d'Achat</span>
                 <span>
                   {moment().subtract(product.age, "years").format("YYYY")}{" "}
                   ({product.age} years ago)
@@ -116,9 +116,9 @@ const ProductInfo = () => {
 
             <Divider />
             <div className="details">
-              <h1>Seller Details</h1>
+              <h1>Détails du Vendeur </h1>
               <div className="detail">
-                <span>Name</span>
+                <span>Nom</span>
                 <span>{product.seller.name}</span>
               </div>
               <div className="detail">
@@ -136,14 +136,14 @@ const ProductInfo = () => {
                   marginBottom: "1.25rem",
                 }}
               >
-                <h1>Bids</h1>
+                <h1>Offres</h1>
                 <Button
                   onClick={() => {
                     setShowAddNewBid(!showAddNewBid);
                   }}
                   disabled={user._id === product.seller._id ||user.role==="fournisseur" ||user.role==="admin"}
                 >
-                  New Bid
+                  Nouvelle Offre
                 </Button>
               </div>
 
@@ -152,17 +152,17 @@ const ProductInfo = () => {
                   return (
                     <div className="bids">
                       <div>
-                        <span>Name</span>
+                        <span>Nom</span>
                         <span>{bid.buyer.name}</span>
                       </div>
 
                       <div>
-                        <span>Bid Amount</span>
+                        <span> Montant de l'Offre</span>
                         <span>${bid.bidAmount}</span>
                       </div>
 
                       <div>
-                        <span>Bid Place On</span>
+                        <span>Date de l'Offre</span>
                         <span>
                           {moment(bid.createdAt).format("MMM D , YYYY hh:mm A")}
                         </span>

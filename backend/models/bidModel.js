@@ -26,6 +26,11 @@ const bidShema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      enum: ['pending', 'accepted', 'rejected'],
+      default: 'pending'
+    },
   },
   {
     timestamps: true,

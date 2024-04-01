@@ -10,7 +10,7 @@ router.post("/notify", authMiddleeware, async (req, res) => {
     await newNotification.save();
     res.send({
       success: true,
-      message: "notification added successfuly",
+      message: "Notification ajoutée avec succès",
     });
   } catch (error) {
     res.send({
@@ -44,7 +44,7 @@ router.delete("/delete-notification/:id", authMiddleeware, async (req, res) => {
     await Notification.findByIdAndDelete(req.params.id);
     res.send({
       success: true,
-      message: "notification deleted successfully",
+      message: "Notification supprimée avec succès",
     });
   } catch (error) {
     res.send({
@@ -67,7 +67,7 @@ router.put("/read-all-notifications", authMiddleeware, async (req, res) => {
     );
     res.send({
       success: true,
-      message:"All notification readed successfully"
+      message:"Toutes les notifications lues avec succès"
     });
   } catch (error) {
     res.send({

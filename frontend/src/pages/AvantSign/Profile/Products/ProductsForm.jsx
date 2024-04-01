@@ -9,19 +9,19 @@ import { AddNotification } from "../../../../apicalls/notification.jsx";
 
 const additionalThings = [
   {
-    label: "Bill Available",
+    label: "Facture Disponible",
     name: "billAvailable",
   },
   {
-    label: "Warranty Available",
+    label: "Garantie Disponible",
     name: "warrantyAvailable",
   },
   {
-    label: "Accessories Available",
+    label: "Accessoires Disponibles",
     name: "accessoriesAvailable",
   },
   {
-    label: "Box Available",
+    label: "Boîte Disponible",
     name: "boxAvailable",
   },
 ];
@@ -50,7 +50,7 @@ const ProductsForm = ({
         response = await EditProduct(selectedProduct._id, values);
       } else {
         values.seller = user._id;
-        values.status = "pending";
+        values.status = "En Attente";
         response = await AddProduct(values);
       }
       dispatch(setLoader(false));
@@ -83,7 +83,9 @@ const ProductsForm = ({
         centered
         width={1000}
         className="Modal"
-        okText="save"
+        okText="Sauvegarder"
+        cancelText="Annuler"
+        
         onOk={() => {
           formRef.current.submit();
         }}
@@ -99,16 +101,16 @@ const ProductsForm = ({
               textTransform: "uppercase",
             }}
           >
-            {selectedProduct ? "Edit Product" : "Add Product"}
+            {selectedProduct ? "Modifier le Produit" : "Ajouter un Produit"}
           </h1>
           <Tabs
             defaultActiveKey="1"
             activeKey={selectedTab}
             onChange={(key) => setSelectedTab(key)}
           >
-            <Tabs.TabPane tab="General" key="1">
+            <Tabs.TabPane tab="général" key="1">
               <Form layout="vertical" ref={formRef} onFinish={onFinish}>
-                <Form.Item label="Name" name="name" rules={rules}>
+                <Form.Item label="Nom" name="name" rules={rules}>
                   <Input type="text" />
                 </Form.Item>
                 <Form.Item label="Description" name="description" rules={rules}>
@@ -116,23 +118,27 @@ const ProductsForm = ({
                 </Form.Item>
                 <Row gutter={[16, 16]}>
                   <Col span={8}>
-                    <Form.Item label="Price" name="price" rules={rules}>
+                    <Form.Item label="Prix" name="price" rules={rules}>
                       <Input type="number" />
                     </Form.Item>
                   </Col>
                   <Col span={8}>
-                    <Form.Item label="Age" name="age" rules={rules}>
+                    <Form.Item label="Âge" name="age" rules={rules}>
                       <Input type="number" />
                     </Form.Item>
                   </Col>
                   <Col span={8}>
-                    <Form.Item label="Category" name="category" rules={rules}>
+                    <Form.Item label="Catégorie" name="category" rules={rules}>
                       <select>
                         <option value="">Select</option>
-                        <option value="electorics">Electronics</option>
-                        <option value="fashion">Fashion</option>
-                        <option value="home">Home</option>
+                        <option value="electronique">Electronique</option>
+                        <option value="alimentation">Alimentation</option>
+                        <option value="maison">Maison</option>
                         <option value="sports">Sports</option>
+                        <option value="sante">Santé</option>
+                        <option value="art-collectibles">
+                          Art & Collectibles
+                        </option>
                       </select>
                     </Form.Item>
                   </Col>
@@ -159,9 +165,10 @@ const ProductsForm = ({
                 </div>
 
                 <Form.Item
-                  label="show Bids on Product Page"
+                  label="Afficher Offres Produit"
                   name="showBidsOnProductPage"
                   valuePropName="checked"
+                  style={{marginTop:"8px"}}
                 >
                   <Input
                     type="checkbox"
@@ -173,7 +180,7 @@ const ProductsForm = ({
                     checked={formRef.current?.getFieldValue(
                       "showBidsOnProductPage"
                     )}
-                    style={{width:50,marginLeft:20}}
+                    style={{ width: 50, marginLeft: 20 }}
                   />
                 </Form.Item>
               </Form>
