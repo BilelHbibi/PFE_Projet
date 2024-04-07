@@ -4,7 +4,6 @@ import Products from "./Products/Products";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import "../../../style/AvantSign/profile.css";
-import ActTamkin from "./Act Document/ActTamkin";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.users);
@@ -32,9 +31,7 @@ const Profile = () => {
               </span>
             </div>
           </Tabs.TabPane>
-          <Tabs.TabPane tab="Envoyé Act tamkin" key="3">
-            <ActTamkin />
-          </Tabs.TabPane>
+          
         </Tabs>
       </div>
     </>

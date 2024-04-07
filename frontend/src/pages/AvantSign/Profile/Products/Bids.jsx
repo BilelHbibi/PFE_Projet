@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Modal, Table, message, Button } from "antd";
 import moment from "moment";
 import { setLoader } from "../../../../redux/loadersSlice";
+import { jsPDF } from "jspdf";
+
 import {
   GetAllBids,
   AcceptBid,
@@ -12,10 +14,14 @@ import {
 } from "../../../../apicalls/products";
 import Divider from "../../../../components/ensemble/ProtectedPage/Divider";
 import { AddNotification } from "../../../../apicalls/notification";
+import PDFGenerator from "../../../../components/ensemble/PDF/PDFGenerator ";
+import Notifications from "../../../../components/ensemble/ProtectedPage/Notifications";
 
 const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
   const [bidsData, setBidsData] = useState([]);
   const dispatch = useDispatch();
+  const [selectedNotification, setSelectedNotification] = useState(null);
+  const [selectedBidDetails, setSelectedBidDetails] = useState(null);
 
   const getData = async () => {
     try {
@@ -48,6 +54,14 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
         );
       }
       const bidDetails = bidDetailsResponse.data;
+      setSelectedNotification({
+        title: "Bid Accepted",
+        message: `Your bid on ${bidDetails.productName} for $${bidDetails.bidAmount} has been accepted.`,
+        buyerName: bidDetails.buyer.name,
+        bidAmount: bidDetails.bidAmount,
+        sellerName: bidDetails.seller.name,
+        createAt: bidDetails.createAt,
+      });
 
       // Proceed to accept the bid
       const acceptResponse = await AcceptBid({ bidId });
@@ -57,12 +71,28 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
         // Send notification with the fetched bid details
         await AddNotification({
           title: "Bid Accepted",
-          message: `Your bid on ${bidDetails.product.name} for $ ${bidDetails.bidAmount} has been accepted.`,
+          message: `Votre offre sur ${bidDetails.product.name} pour $ ${bidDetails.bidAmount} a été acceptée. Cliquez ici pour télécharger le contrat`,
           user: bidDetails.buyer._id,
-          onClick: `/profile/${bidDetails.product._id}`, // Adjust as necessary
+          onClick: false,
           read: false,
+          data: {
+            // Ensure this structure matches what you expect in your PDF generation logic
+            bidId: bidDetails._id,
+            productName: bidDetails.product.name,
+            bidAmount: bidDetails.bidAmount,
+            buyerName: bidDetails.buyer.name,
+            sellerName: bidDetails.seller.name,
+            createAt: bidDetails.createAt,
+          },
         });
 
+        setSelectedBidDetails({
+          bidId: bidId,
+          buyerName: bidDetails.buyer.name,
+          bidAmount: bidDetails.bidAmount,
+          sellerName: bidDetails.seller.name,
+          createAt: bidDetails.createAt,
+        });
         // Update the local state to reflect the bid acceptance
         setBidsData(
           bidsData.map((bid) =>
@@ -163,7 +193,11 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
       dataIndex: "action",
       render: (_, record) => {
         if (record.status === "accepted") {
-          return <button  className="acceptDisabled" disabled>Accepté</button>;
+          return (
+            <button className="acceptDisabled" disabled>
+              Accepté
+            </button>
+          );
         } else {
           return (
             <div className="AcceptReject">

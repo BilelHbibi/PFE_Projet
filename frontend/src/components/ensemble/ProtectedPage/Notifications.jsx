@@ -1,10 +1,12 @@
-import { Modal, message } from "antd";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import {Modal, message } from "antd";
+import React, { useState } from "react";
+import {useNavigate } from "react-router-dom";
 import moment from "moment";
 import { DeleteNotification } from "../../../apicalls/notification";
 import { setLoader } from "../../../redux/loadersSlice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import PDFGenerator from "../PDF/PDFGenerator ";
 
 const Notifications = ({
   notifications = [],
@@ -14,6 +16,8 @@ const Notifications = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [selectedNotification, setSelectedNotification] = useState(null);
+  const { user } = useSelector((state) => state.users);
 
   const deleteNotification = async (id) => {
     try {
@@ -31,11 +35,19 @@ const Notifications = ({
       message.error(error.message);
     }
   };
+
+  const handleDownloadPdf = (notification) => {
+    setSelectedNotification(notification);
+  };
+
   return (
     <Modal
       title="Notifications"
       open={showNotifications}
-      onCancel={() => setShowNotifications(false)}
+      onCancel={() => {
+        setShowNotifications(false);
+        setSelectedNotification(null);
+      }}
       footer={null}
       centered
       width={1000}
@@ -51,16 +63,28 @@ const Notifications = ({
                   alignItems: "center",
                 }}
               >
-                <div
-                  onClick={() => {
-                    navigate(notification.onClick);
-                    setShowNotifications(false);
-                  }}
-                >
-                  <h1>{notification.title}</h1>
-                  <span>{notification.message}</span>
-                  <h1>{moment(notification.createAt).fromNow()}</h1>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div
+                    onClick={() => {
+                      if (user?.role !== "Client") {
+                        navigate(notification.onClick);
+                      }
+                      setShowNotifications(false);
+                    }}
+                  >
+                    <h1>{notification.title}</h1>
+                    <span>{notification.message}</span>
+
+                    <h1>{moment(notification.createAt).fromNow()}</h1>
+                  </div>
+                  <div>
+                    {user?.role === "Client" &&
+                      notification.title !== "Bid Rejected" && (
+                        <button onClick={() => handleDownloadPdf(notification)}>Télécharger PDF</button>
+                      )}
+                  </div>
                 </div>
+
                 <i
                   className="ri-delete-bin-line"
                   onClick={() => {
@@ -72,6 +96,7 @@ const Notifications = ({
           );
         })}
       </div>
+      {selectedNotification && <PDFGenerator notification={selectedNotification} />}
     </Modal>
   );
 };

@@ -22,6 +22,7 @@ const notificationShema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    data: mongoose.Schema.Types.Mixed,
   },
   {
     timestamps: true,

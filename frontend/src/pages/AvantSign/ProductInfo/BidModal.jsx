@@ -48,6 +48,8 @@ const BidModal = ({ showBidModal, setShowBidModal, product, reloadData }) => {
       centered
       width={600}
       onOk={() => formRef.current.submit()}
+      okText="Valider"
+      cancelText="Annuler"
     >
       <div>
         <div
@@ -66,11 +68,15 @@ const BidModal = ({ showBidModal, setShowBidModal, product, reloadData }) => {
               textAlign: "center",
             }}
           >
-            New Bid
+            Nouvelle Offre
           </h1>
 
           <Form layout="vertical" ref={formRef} onFinish={onFinish}>
-            <Form.Item label="Bid Amount" name="bidAmount" rules={rules}>
+            <Form.Item
+              label="Montant de l'offre"
+              name="bidAmount"
+              rules={rules}
+            >
               <Input />
             </Form.Item>
             <Form.Item label="Message" name="message" rules={rules}>
