@@ -58,7 +58,6 @@ const productShema = new mongoose.Schema(
     },
     status: {
       type: String,
-      ref: " En Attente",
       required: true,
     },
   },

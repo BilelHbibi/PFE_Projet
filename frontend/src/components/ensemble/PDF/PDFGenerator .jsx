@@ -15,13 +15,13 @@ const PDFGenerator = ({ notification }) => {
     const pdf = new jsPDF();
 
     pdf.setTextColor("#D74121");
-    pdf.setFontSize(20);
+    pdf.setFontSize(16);
     pdf.setFont("helvetica", "bold");
     pdf.text("Contrat de Vente", 105, 20, null, null, "center");
 
     // Initial setup for text
     pdf.setTextColor(0, 0, 0);
-    pdf.setFontSize(12);
+    pdf.setFontSize(16);
     let currentY = 40; // Initial Y position
     let currentX = 20; // Initial X position
 
@@ -53,7 +53,7 @@ const PDFGenerator = ({ notification }) => {
     });
 
     // Move to the next line for signatures
-    currentY += 20;
+    currentY += 40;
 
     // Add signatures, adjusting positions as needed
     pdf.setFont("helvetica", "normal");

@@ -11,30 +11,33 @@ const Header = () => {
   const btn = useRef(null);
   const con = useRef(null);
 
-  const handleStickyHeader = () => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("sticky__header");
-      } else {
-        headerRef.current.classList.remove("sticky__header");
-      }
-    });
-  };
-
   useEffect(() => {
-    handleStickyHeader();
-    return () => {
-      window.removeEventListener("scroll", handleStickyHeader);
+    const handleScroll = () => {
+      if (headerRef.current) {
+        if (
+          document.body.scrollTop > 80 ||
+          document.documentElement.scrollTop > 80
+        ) {
+          headerRef.current.classList.add("sticky__header");
+        } else {
+          headerRef.current.classList.remove("sticky__header");
+        }
+      }
     };
-  });
+  
+    // Ajoutez l'écouteur d'événement de défilement
+    window.addEventListener("scroll", handleScroll);
+  
+    // Nettoyez en supprimant l'écouteur d'événement
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
-    menuRef.current.classList.toggle("show__menu");
-    btn.current.classList.toggle("show__btn");
-    con.current.classList.toggle("con");
+    menuRef.current?.classList.toggle("show__menu");
+    btn.current?.classList.toggle("show__btn");
+    con.current?.classList.toggle("con");
   };
 
   return (

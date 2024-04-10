@@ -15,7 +15,7 @@ function App() {
   return(
     <>
      {/* <Preloader/> */}
-     <Layout/>z
+     <Layout/>
     </>
   )
 }

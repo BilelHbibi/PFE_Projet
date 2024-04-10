@@ -44,11 +44,11 @@
 
 
 .counter i{
-    font-size: 45px;
+    font-size: 45px !important;
 }
 
 .counter h1{
-    font-size: 46px;
+    font-size: 46px !important;
     margin-top: 20px;
     color: rgb(177, 22, 22);
     font-weight: 700;
@@ -85,7 +85,7 @@
 }
 
 .counter h1{
-    font-size: 25px;
+    font-size: 25px !important;
     margin-top: 5px;
 }
 

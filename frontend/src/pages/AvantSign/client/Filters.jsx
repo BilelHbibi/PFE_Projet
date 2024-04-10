@@ -3,7 +3,7 @@ import { Input } from "antd";
 const categories = [
   {
     name: "Electronique",
-    value: "electronics",
+    value: "electronique",
   },
   {
     name: "Alimentation",
@@ -23,7 +23,7 @@ const categories = [
   },
   {
     name: "Art & Collectibles",
-    value: "art-collectibles",
+    value: "art & collectibles",
   },
   
 ];

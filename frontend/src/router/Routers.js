@@ -34,11 +34,21 @@ import ProfileClient from "../ProfileClientBids/ProfileClient";
 const Routers = () => {
   const loading = useSelector((state) => state.loaders.loading);
   const location = useLocation();
+  const [showPreloader, setShowPreloader] = useState(false);
+
+  useEffect(() => {
+    // Vérifiez si c'est la première visite de l'utilisateur
+    const isFirstVisit = localStorage.getItem("isFirstVisit") === null;
+    if (isFirstVisit) {
+      setShowPreloader(true);
+      localStorage.setItem("isFirstVisit", "false");
+    }
+  }, []);
  
 
   return (
     <>
-      {(location.pathname === "/" || location.pathname === "/home") && <Preloader />}
+      {showPreloader && (location.pathname === "/" || location.pathname === "/") && <Preloader />}
       {loading && location.pathname !== "/" && location.pathname !== "/home" && <Spinner />}
       <Routes>
         <Route path="/" element={<><Header/><Navigate to="/home" /><Footer/></>} />

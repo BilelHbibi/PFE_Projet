@@ -180,13 +180,15 @@ router.put("/update-product-status/:id", authMiddleeware, async (req, res) => {
       status,
     });
 
-    //send notification to seller
+    // //send notification to seller
     const newNotification = new Notification({
       user: updatedProduct.seller,
       message: `Votre produit ${updatedProduct.name} a été ${status}`,
       title: "Statut du Produit Mis à Jour",
       onClick: `/profile`,
       read: false,
+      data:updatedProduct,
+      status: `${status}`,
     });
     await newNotification.save()
 

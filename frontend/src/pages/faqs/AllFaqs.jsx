@@ -30,18 +30,9 @@ const AllFaqs = () => {
     }
   };
 
-  function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
+  
   return (
     <>
-    <ScrollToTop />
       <BackForAll img={img} text="FAQ" />
       <div className="Faqs">
         <div className="container">

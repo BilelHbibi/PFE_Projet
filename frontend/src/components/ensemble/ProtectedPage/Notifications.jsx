@@ -1,12 +1,14 @@
-import {Modal, message } from "antd";
+import { Modal, message } from "antd";
 import React, { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { DeleteNotification } from "../../../apicalls/notification";
 import { setLoader } from "../../../redux/loadersSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import PDFGenerator from "../PDF/PDFGenerator ";
+import { GetProductById } from "../../../apicalls/products";
+import LettreFournisseur from "../PDF/LettreFournisseur";
 
 const Notifications = ({
   notifications = [],
@@ -17,6 +19,7 @@ const Notifications = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedNotification, setSelectedNotification] = useState(null);
+  const [pdfType, setPdfType] = useState(null); 
   const { user } = useSelector((state) => state.users);
 
   const deleteNotification = async (id) => {
@@ -36,8 +39,9 @@ const Notifications = ({
     }
   };
 
-  const handleDownloadPdf = (notification) => {
+  const handleDownloadPdf = (notification, type) => {
     setSelectedNotification(notification);
+    setPdfType(type); // Set the PDF type based on which button is clicked
   };
 
   return (
@@ -54,6 +58,7 @@ const Notifications = ({
     >
       <div className="notification">
         {notifications.map((notification) => {
+          console.log(notification);
           return (
             <div className="content" key={notification._id}>
               <div
@@ -80,7 +85,15 @@ const Notifications = ({
                   <div>
                     {user?.role === "Client" &&
                       notification.title !== "Bid Rejected" && (
-                        <button onClick={() => handleDownloadPdf(notification)}>Télécharger PDF</button>
+                        <button onClick={() => handleDownloadPdf(notification, "tamkin")}>
+                          Télécharger Act Tamkin
+                        </button>
+                      )}
+                    {notification.status === "Approuvé" &&
+                      notification.data.status!=="blocked" && (
+                        <button onClick={() => handleDownloadPdf(notification, "fournisseur")}>
+                          Télécharger Lettre de Fournisseur
+                        </button>
                       )}
                   </div>
                 </div>
@@ -96,7 +109,8 @@ const Notifications = ({
           );
         })}
       </div>
-      {selectedNotification && <PDFGenerator notification={selectedNotification} />}
+      {selectedNotification && pdfType === "tamkin" && <PDFGenerator notification={selectedNotification} />}
+      {selectedNotification && pdfType === "fournisseur" && <LettreFournisseur notification={selectedNotification} />}
     </Modal>
   );
 };

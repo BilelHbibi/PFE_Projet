@@ -6,12 +6,12 @@
 .espace .container .content h1 {
   color: rgb(180, 56, 56);
   position: relative;
-  font-size: 45px;
+  font-size: 40px !important;
 }
 
 .espace .container .content hr {
   position: absolute;
-  top: 45px;
+  top: 40px ;
   left: 0;
   width: 100%;
   height: 6%;
