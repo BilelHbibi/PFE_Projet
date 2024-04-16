@@ -7,6 +7,7 @@ import bidsRoute from "./routes/bidsRoute.js";
 import notificationsRoute from "./routes/notificationsRoute.js";
 
 
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.use("/api/users", usersRoute);
 app.use("/api/products", productsRoute);
 app.use("/api/bids", bidsRoute);
 app.use("/api/notifications", notificationsRoute);
+
 
 app.listen(port, () => {
   connectDB();

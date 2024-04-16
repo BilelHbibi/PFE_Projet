@@ -51,7 +51,7 @@ const ProductInfo = () => {
                   <img
                     src={image}
                     alt=""
-                    className={selectedImageIndex == index ? "active" : ""}
+                    className={selectedImageIndex === index ? "active" : ""}
                     onClick={() => {
                       setSelectedImageIndex(index);
                     }}

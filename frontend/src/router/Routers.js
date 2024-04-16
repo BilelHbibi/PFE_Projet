@@ -7,7 +7,6 @@ import FinanceIjara from "../pages/Finance/FinanceIjara";
 import EspaceClient from "../pages/Espace/EspaceClient";
 import EspaceFourni from "../pages/Espace/EspaceFourni";
 import Apropos from "../pages/Apropos";
-import Contact from "../pages/Contact";
 import Actualité from "../pages/Actualité/Actualité";
 import BtsConfirme from "../pages/Actualité/BtsConfirme";
 import BtsConvention from "../pages/Actualité/BtsConvention";
@@ -29,6 +28,8 @@ import ProductInfo from "../pages/AvantSign/ProductInfo/ProductInfo";
 import Spinner from "../components/ensemble/spinnerSign/Spinner";
 import Preloader from "../Preloader/Preloader";
 import ProfileClient from "../ProfileClientBids/ProfileClient";
+import Contact from "../pages/Contact";
+import ActivationPage from "../pages/sign/ActivationPage";
 
 
 const Routers = () => {
@@ -64,6 +65,7 @@ const Routers = () => {
         <Route path="/Présentation-Générale" element={<><Header/><Apropos/><Footer/></>} />
         <Route path="/contact" element={<><Header/><Contact/><Footer/></>} />
         <Route path="/connexion" element={<><Connexion/><Footer/></>} />
+        <Route path="/confirm/:activationCode" element={<><ActivationPage/></>} />
         <Route path="/inscription" element={<><ProtectedPage><Inscription/></ProtectedPage></>} />
         
 

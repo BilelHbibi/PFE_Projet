@@ -45,7 +45,19 @@ export const UpdateUserStatus = async (id, status) => {
   try {
     const response = await axiosInstance.put(
       `/api/users/update-user-status/${id}`,
-      {status}
+      { status }
+    );
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+//verify User
+export const verifyUser = async (activationCode) => {
+  try {
+    const response = await axiosInstance.post(
+      `/api/users/verifyuser/${activationCode}`
     );
     return response.data;
   } catch (error) {

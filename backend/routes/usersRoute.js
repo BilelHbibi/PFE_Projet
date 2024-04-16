@@ -4,6 +4,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import authMiddleeware from "../middlwares/authMiddleeware.js";
+import sendConfirmationEmail from "../config/nodemailer.js";
 
 // new user registeration
 router.post("/register", async (req, res) => {
@@ -18,9 +19,22 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPassword;
 
+    //Activation code
+    const characters =
+      "123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+    let activationCode = "";
+    for (let i = 0; i < 25; i++) {
+      activationCode +=
+        characters[Math.floor(Math.random() * characters.length)];
+    }
+
     //save user
-    const newUser = new User(req.body);
+    const newUser = new User({
+      ...req.body,
+      activationCode: activationCode, // Add the activation code
+    });
     await newUser.save();
+    sendConfirmationEmail(newUser.email, newUser.activationCode);
     res.send({
       success: true,
       message: "Utilisateur créé avec succès",
@@ -33,9 +47,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-
-
-
 // user login
 router.post("/login", async (req, res) => {
   try {
@@ -46,8 +57,8 @@ router.post("/login", async (req, res) => {
     }
 
     //if user is active or not
-    if(user.status !== "active"){
-      throw new Error("the user account is blocked , please contact admin")
+    if (user.status !== "active") {
+      throw new Error("the user account is blocked , please contact admin");
     }
 
     //compare password
@@ -55,6 +66,10 @@ router.post("/login", async (req, res) => {
       req.body.password,
       user.password
     );
+    if (user && validPassword && !user.isActive && user.role !== "admin") {
+      throw new Error("Verifier votre boite email pour lactivation");
+    }
+
     if (!validPassword) {
       throw new Error("Mot de passe invalide");
     }
@@ -98,7 +113,7 @@ router.get("/get-current-user", authMiddleeware, async (req, res) => {
 //get all users
 router.get("/get-users", authMiddleeware, async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find({ role: { $ne: "admin" } });
     res.send({
       success: true,
       message: "Utilisateur récupéré avec succès",
@@ -115,7 +130,7 @@ router.get("/get-users", authMiddleeware, async (req, res) => {
 //update user status
 router.put("/update-user-status/:id", authMiddleeware, async (req, res) => {
   try {
-    await User.findByIdAndUpdate(req.params.id,req.body)
+    await User.findByIdAndUpdate(req.params.id, req.body);
     res.send({
       success: true,
       message: "Statut de l'utilisateur mis à jour avec succès",
@@ -123,6 +138,37 @@ router.put("/update-user-status/:id", authMiddleeware, async (req, res) => {
   } catch (error) {
     res.send({
       success: false,
+      message: error.message,
+    });
+  }
+});
+
+router.post("/verifyuser/:activationCode", async (req, res) => {
+  try {
+    // Find the user with the given activation code
+    const user = await User.findOne({ activationCode: req.params.activationCode });
+
+    // Check if the user was not found
+    if (!user) {
+      return res.status(404).send({
+        message: "Ce code d'activation est faut", // This activation code is incorrect
+      });
+    }
+
+    // If the user is found, activate the user
+    user.isActive = true;
+
+    // Save the updated user object
+    await user.save();
+
+    // Send a success response
+    res.send({
+      message: "Ce code d'activation est success", // This activation code is successful
+    });
+
+  } catch (error) {
+    // Handle any errors that occur during the process
+    res.status(500).send({
       message: error.message,
     });
   }

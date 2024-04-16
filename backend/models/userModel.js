@@ -9,7 +9,7 @@ const userShema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      trim : true
+      trim: true,
     },
     password: {
       type: String,
@@ -21,12 +21,17 @@ const userShema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default:"active",
+      default: "active",
     },
-    profilePicture:{
-      type:String,
-      default:""
-    }
+    profilePicture: {
+      type: String,
+      default: "",
+    },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
+    activationCode: String,
   },
   {
     timestamps: true,
