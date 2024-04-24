@@ -79,8 +79,8 @@ const Products = () => {
       dataIndex: "category",
     },
     {
-      title: "Âge",
-      dataIndex: "age",
+      title: "Etat",
+      dataIndex: "etat",
     },
     {
       title: "Statut",

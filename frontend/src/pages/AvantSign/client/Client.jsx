@@ -16,7 +16,7 @@ const Client = () => {
   const [filters, setFilters] = useState({
     status: "Approuvé",
     category: [],
-    age: [],
+    etat: []
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,24 +25,30 @@ const Client = () => {
   const getData = async () => {
     try {
       dispatch(setLoader(true));
+      console.log("Filters being used:", filters); // Debug: log filters
       const response = await GetProducts(filters);
       dispatch(setLoader(false));
       if (response.success) {
         setProducts(response.data);
+        console.log("Products fetched:", response.data); // Debug: log fetched data
       }
     } catch (error) {
       dispatch(setLoader(false));
       message.error(error.message);
     }
   };
-
+  
   useEffect(() => {
     getData();
-  }, [filters]);
+  }, [filters]); //
+
+ 
+
 
   // Filter products based on search term matching the start of the product name
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().startsWith(searchTerm.toLowerCase()) &&
+    (filters.etat.length === 0 || filters.etat.includes(product.etat))
   );
 
   return (
@@ -97,11 +103,10 @@ const Client = () => {
                   <div className="content">
                     <h1>{product.name}</h1>
                     <p>
-                      {product.age}
-                      {product.age === 1 ? " ans" : " ans"}{" "}
+                      {product.etat}
                     </p>
                     <Divider />
-                    <span>$ {product.price}</span>
+                    <span>{product.price} DT</span>
                   </div>
                 </div>
               );

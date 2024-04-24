@@ -7,8 +7,6 @@ import { setLoader } from "../../../redux/loadersSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import PDFGenerator from "../PDF/PDFGenerator ";
-import { GetProductById } from "../../../apicalls/products";
-import LettreFournisseur from "../PDF/LettreFournisseur";
 
 const Notifications = ({
   notifications = [],
@@ -86,15 +84,10 @@ const Notifications = ({
                     {user?.role === "Client" &&
                       notification.title !== "Bid Rejected" && (
                         <button onClick={() => handleDownloadPdf(notification, "tamkin")}>
-                          Télécharger Act Tamkin
+                          Télécharger Act Devis
                         </button>
                       )}
-                    {notification.status === "Approuvé" &&
-                      notification.data.status!=="blocked" && (
-                        <button onClick={() => handleDownloadPdf(notification, "fournisseur")}>
-                          Télécharger Lettre de Fournisseur
-                        </button>
-                      )}
+                    
                   </div>
                 </div>
 
@@ -110,7 +103,6 @@ const Notifications = ({
         })}
       </div>
       {selectedNotification && pdfType === "tamkin" && <PDFGenerator notification={selectedNotification} />}
-      {selectedNotification && pdfType === "fournisseur" && <LettreFournisseur notification={selectedNotification} />}
     </Modal>
   );
 };

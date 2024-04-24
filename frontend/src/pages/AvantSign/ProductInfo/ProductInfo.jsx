@@ -81,7 +81,7 @@ const ProductInfo = () => {
               <h1>Détails du Produit</h1>
               <div className="detail">
                 <span>Prix</span>
-                <span>${product.price}</span>
+                <span>{product.price} DT</span>
               </div>
               <div className="detail">
                 <span>Catégorie</span>
@@ -106,10 +106,9 @@ const ProductInfo = () => {
                 <span>{product.warrantyAvailable ? "Yes" : "No"}</span>
               </div>
               <div className="detail">
-                <span>Année d'Achat</span>
-                <span>
-                  {moment().subtract(product.age, "years").format("YYYY")}{" "}
-                  ({product.age} years ago)
+                <span>Etat</span>
+                <span style={{ textTransform: "uppercase" }}>
+                  {product.etat}
                 </span>
               </div>
             </div>

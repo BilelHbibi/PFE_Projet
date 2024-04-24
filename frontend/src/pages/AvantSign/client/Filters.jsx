@@ -11,7 +11,7 @@ const categories = [
   },
   {
     name: "Maison",
-    value: "maison",
+    value: "aaison",
   },
   {
     name: "Sports",
@@ -19,35 +19,22 @@ const categories = [
   },
   {
     name: "Santé",
-    value: "santé",
+    value: "sante",
   },
   {
     name: "Art & Collectibles",
-    value: "art & collectibles",
+    value: "art-collectibles",
   },
-  
 ];
 
-const ages = [
+const etats = [
   {
-    name: "0-2 Ans",
-    value: "0-2",
+    name: "Occasion",
+    value: "occasion",
   },
   {
-    name: "3-5 Ans",
-    value: "3-5",
-  },
-  {
-    name: "6-8 Ans",
-    value: "6-8",
-  },
-  {
-    name: "9-12 Ans",
-    value: "9-12",
-  },
-  {
-    name: "13+ Ans",
-    value: "12-20",
+    name: "Neuf",
+    value: "neuf",
   },
 ];
 
@@ -96,35 +83,35 @@ const Filters = ({ showFilters, setShowFilters, filters, setFilters }) => {
           })}
         </div>
 
-        <h1>Ages</h1>
+        <h1>Etat</h1>
         <div className="list">
-          {ages.map((age) => {
+          {etats.map((etat) => {
             return (
               <div
-                style={{ display: "flex", gap: "0.5rem",alignItems:"center" }}
+                style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
               >
                 <Input
                   type="checkbox"
-                  name="age"
+                  name="etat"
                   className="max-width"
-                  checked={filters.age.includes(age.value)}
+                  checked={filters.etat.includes(etat.value)}
                   onChange={(e) => {
                     if (e.target.checked) {
                       setFilters({
                         ...filters,
-                        age: [...filters.age, age.value],
+                        etat: [...filters.etat, etat.value],
                       });
                     } else {
                       setFilters({
                         ...filters,
-                        age: filters.age.filter(
-                          (item) => item !== age.value
+                        etat: filters.etat.filter(
+                          (item) => item !== etat.value
                         ),
                       });
                     }
                   }}
                 />
-                <label htmlFor="age">{age.name}</label>
+                <label htmlFor="etat">{etat.name}</label>
               </div>
             );
           })}

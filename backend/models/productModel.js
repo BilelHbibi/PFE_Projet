@@ -18,8 +18,8 @@ const productShema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    age: {
-      type: Number,
+    etat: {
+      type: String,
       required: true,
     },
     images: {

@@ -123,8 +123,12 @@ const ProductsForm = ({
                     </Form.Item>
                   </Col>
                   <Col span={8}>
-                    <Form.Item label="Âge" name="age" rules={rules}>
-                      <Input type="number" />
+                    <Form.Item label="etats" name="etat" rules={rules}>
+                    <select>
+                        <option value="">Select</option>
+                        <option value="occasion">occasion </option>
+                        <option value="neuf">neuf</option>
+                      </select>
                     </Form.Item>
                   </Col>
                   <Col span={8}>
