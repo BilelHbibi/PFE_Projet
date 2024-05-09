@@ -18,10 +18,10 @@ const Admin = () => {
     <>
       <div>
         <Tabs>
-          <Tabs.TabPane tab="Products" key="1">
+          <Tabs.TabPane tab="Produits" key="1">
             <Products />
           </Tabs.TabPane>
-          <Tabs.TabPane tab="Users" key="2">
+          <Tabs.TabPane tab="Utilisateurs" key="2">
             <Users />
           </Tabs.TabPane>
         </Tabs>

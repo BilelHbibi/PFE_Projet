@@ -114,7 +114,7 @@ const ProductsForm = ({
                   <Input type="text" />
                 </Form.Item>
                 <Form.Item label="Description" name="description" rules={rules}>
-                  <TextArea type="text" />
+                  <TextArea type="text" rows={"3"}/>
                 </Form.Item>
                 <Row gutter={[16, 16]}>
                   <Col span={8}>

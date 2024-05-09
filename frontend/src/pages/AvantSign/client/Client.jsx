@@ -63,13 +63,7 @@ const Client = () => {
           />
         )}
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-            width: "100%",
-            margin: "0 20px",
-          }}
+        className="afterFilter"
         >
           <div
             style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}

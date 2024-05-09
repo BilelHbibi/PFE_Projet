@@ -14,7 +14,6 @@
 }
 
 .ProtectedPage2 .personnelle {
-  
   line-height: 20px;
   border-radius: 5px;
   display: flex;
@@ -135,4 +134,26 @@
 .notification .content span {
   color: #6b7280;
   font-size: 17px;
+}
+
+
+
+
+
+ @media only screen and (max-width: 600px) {
+  .ProtectedPage2 {
+    display: flex;
+    justify-content: start;
+    padding: 0 5px;
+  }
+  .ProtectedPage2 .header h1 {
+    font-size: 1rem !important
+  }
+  .ProtectedPage2 .personnelle .name {
+    padding: 5px  !important;
+   }
+   .ProtectedPage .btn-inscription button{
+    padding: 5px !important;
+  }
+  
 }

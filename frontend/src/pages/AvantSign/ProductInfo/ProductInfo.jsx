@@ -140,7 +140,7 @@ const ProductInfo = () => {
                   onClick={() => {
                     setShowAddNewBid(!showAddNewBid);
                   }}
-                  disabled={user._id === product.seller._id ||user.role==="Fournisseur" ||user.role==="admin"}
+                  disabled={user._id === product.seller._id ||user.role==="admin"}
                 >
                   Nouvelle Offre
                 </Button>

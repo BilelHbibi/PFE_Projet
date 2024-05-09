@@ -33,7 +33,6 @@
   height: 13rem;
   padding: 0.5rem;
   border-radius: 0.375rem;
-  
 }
 
 .client .content .card .content {
@@ -60,38 +59,35 @@
   color: #b91010;
 }
 
-
 .client i {
   cursor: pointer;
 }
 
-.client .search{
-  border: 1px solid #D1D5DB;
-  padding:0.25rem 0.5rem; 
-  border-radius: 0.25rem; 
-  
+.client .search {
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
 }
 
-.client .search4{
+.client .search4 {
   width: 98.7%;
 }
-.client .search5{
+.client .search5 {
   width: 96.8%;
 }
 
-
-.client input:focus{
+.client input:focus {
   border: 1px solid #646161 !important;
 }
 
-.filters{
+.filters {
   width: 17rem;
   display: flex;
   flex-direction: column;
   margin-right: 10px;
 }
 
-.filters .header{
+.filters .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,20 +100,80 @@
   color: rgb(173, 53, 53);
 }
 
-.filters .content{
+.filters .content {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   margin-top: 1.25rem;
 }
-.filters .content h1{
-  color: #4B5563; 
+.filters .content h1 {
+  color: #4b5563;
   font-size: 20px;
 }
 
-.filters .content .list{
+.filters .content .list {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   margin-bottom: 25px;
+}
+
+.client .afterFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid4 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .grid5 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .client .content .card {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .client {
+    display: block;
+    margin: 5px;
+  }
+  .grid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .client .content .card {
+    margin-right: 0px;
+  }
+  .filters {
+    width: 100%;
+  }
+  .client .content .card {
+    width: 100%;
+    margin:10px auto;
+  }
+  .filters .content .list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .client .search {
+    width: 100% !important;
+  }
+  .client .afterFilter{
+    margin: 0 !important;
+  }
+  .client .search4 {
+    width: 100%;
+  }
+  .client .search5 {
+    width: 100%;
+  }
 }

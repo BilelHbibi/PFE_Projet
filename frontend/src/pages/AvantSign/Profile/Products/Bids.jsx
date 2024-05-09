@@ -55,8 +55,8 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
       }
       const bidDetails = bidDetailsResponse.data;
       setSelectedNotification({
-        title: "Bid Accepted",
-        message: `Your bid on ${bidDetails.productName} for $${bidDetails.bidAmount} has been accepted.`,
+        title: "Offre acceptée",
+        message: `Your bid on ${bidDetails.productName} for ${bidDetails.bidAmount} DT has been accepted.`,
         buyerName: bidDetails.buyer.name,
         bidAmount: bidDetails.bidAmount,
         sellerName: bidDetails.seller.name,
@@ -70,8 +70,8 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
 
         // Send notification with the fetched bid details
         await AddNotification({
-          title: "Bid Accepted",
-          message: `Votre offre sur ${bidDetails.product.name} pour $ ${bidDetails.bidAmount} a été acceptée. Cliquez ici pour télécharger le contrat`,
+          title: "Offre acceptée",
+          message: `Votre offre sur ${bidDetails.product.name} pour ${bidDetails.bidAmount} DT a été acceptée. Cliquez ici pour télécharger le contrat`,
           user: bidDetails.buyer._id,
           onClick: false,
           read: false,
@@ -132,7 +132,7 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
         // Envoyer une notification avec les détails de l'offre récupérés
         await AddNotification({
           title: "Bid Rejected",
-          message: `Your bid on ${bidDetails.product.name} for $ ${bidDetails.bidAmount} has been rejected.`,
+          message: `Your bid on ${bidDetails.product.name} for ${bidDetails.bidAmount} DT has been rejected.`,
           user: bidDetails.buyer._id,
           onClick: `/profile/${bidDetails.buyer._id}`, // Ajustez si nécessaire
           read: false,
@@ -227,7 +227,7 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
 
   return (
     <Modal
-      title="Bids"
+      title="Les Offre"
       open={showBidsModal}
       onCancel={() => setShowBidsModal(false)}
       centered
@@ -244,7 +244,7 @@ const Bids = ({ showBidsModal, setShowBidsModal, selectedProduct }) => {
             color: "#6B7280",
           }}
         >
-          Product Name: {selectedProduct.name}
+          Nom de Produit: {selectedProduct.name}
         </h1>
 
         <Table columns={columns} dataSource={bidsData} />

@@ -26,7 +26,7 @@ const BidModal = ({ showBidModal, setShowBidModal, product, reloadData }) => {
         //send notification to seller
         await AddNotification({
           title: "Une nouvelle offre a été placée",
-          message: `Une nouvelle offre a été placée sur votre produit ${product.name} par ${user.name} pour $ ${values.bidAmount}`,
+          message: `Une nouvelle offre a été placée sur votre produit ${product.name} par ${user.name} pour ${values.bidAmount} DT`,
           user: product.seller._id,
           onClick: `/profile`,
           read: false,
