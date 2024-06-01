@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import img1 from "../../assets/images/espace-Client.png";
 import BackForAll from "../../components/backAll/BackForAll";
@@ -9,10 +9,20 @@ import demande_finance_ijara from "../../assets/pdf/client/Demande de Financemen
 import Engagement from "../../assets/pdf/client/Engagement.pdf";
 import mod_moins_30 from "../../assets/pdf/client/Modèle d’étude de projet (Moins de 30K DT).pdf";
 import mod_plus_30 from "../../assets/pdf/client/Modèle d’étude de projet (Plus de 30K DT).pdf";
+import { useLocation } from "react-router-dom";
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 const EspaceClient = () => {
   return (
     <>
+    <ScrollToTop />
       <BackForAll img={img1} text="Espace Client" />
       <div className="espace">
         <div className="container">

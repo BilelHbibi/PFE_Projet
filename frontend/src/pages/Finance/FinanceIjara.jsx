@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BackForAll from "../../components/backAll/BackForAll";
 import img1 from "../../assets/images/BackForAll.jpg";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import "../../style/finance.css";
 import img2 from "../../assets/images/finance/ijara.jpeg";
+import { useLocation } from "react-router-dom";
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 const FinanceIjara = () => {
   return (
     <>
+    <ScrollToTop />
       <BackForAll img={img1} text="Financement Ijara" />
       <div className="container">
         <Breadcrumbs />

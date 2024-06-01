@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import BackForAll from "../../components/backAll/BackForAll";
 import img1 from "../../assets/images/espace-fourni.jpg";
@@ -7,10 +7,20 @@ import Personne_Physique from "../../assets/pdf/fournisseur/Personne Physique.pd
 import Personne_Morale from "../../assets/pdf/fournisseur/Personne Morale.pdf";
 import Engagement from "../../assets/pdf/fournisseur/Engagement.pdf";
 import Demande_dadhésion from "../../assets/pdf/fournisseur/Demande d’adhésion.pdf";
+import { useLocation } from "react-router-dom";
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 const EspaceFourni = () => {
   return (
     <>
+    <ScrollToTop />
       <BackForAll img={img1} text="Espace Fournisseur" />
       <div className="espace">
         <div className="container">

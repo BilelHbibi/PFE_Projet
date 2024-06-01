@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BackForAll from "../../components/backAll/BackForAll";
 import img1 from "../../assets/images/BackForAll.jpg";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import "../../style/finance.css";
 import img2 from "../../assets/images/finance/mourabaha.jpeg";
+import { useLocation } from "react-router-dom";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 const FinanceMoura = () => {
   return (
     <>
+    <ScrollToTop />
       <BackForAll img={img1} text="financement Mourabaha" />
       <div className="container">
         <Breadcrumbs />
@@ -25,14 +36,13 @@ const FinanceMoura = () => {
               préalablement. la Marge de Profit peut être un montant fixé
               convenu d'avance ou un pourcentage du prix d'acquisition initial.
               Le client s'engage à rembourser le prix de vente sur des échéances
-              fixes convenues d'avance. Banque BTS achète le bien qu’elle
-              revend à terme à son client moyennant une marge bénéficiaire
-              convenue entre les deux parties. Cette marge de profit peut
-              consister en un montant fixe ou en un pourcentage du coût
-              d’acquisition initial dudit bien. La Mourabaha est un mode de
-              financement proposé par Banque BTS aussi bien pour les Clients
-              particuliers qu’à ceux des Entreprises et Professionnels pour le
-              financement :
+              fixes convenues d'avance. Banque BTS achète le bien qu’elle revend
+              à terme à son client moyennant une marge bénéficiaire convenue
+              entre les deux parties. Cette marge de profit peut consister en un
+              montant fixe ou en un pourcentage du coût d’acquisition initial
+              dudit bien. La Mourabaha est un mode de financement proposé par
+              Banque BTS aussi bien pour les Clients particuliers qu’à ceux des
+              Entreprises et Professionnels pour le financement :
             </p>
             <div className="check">
               <i class="ri-check-fill"></i>
